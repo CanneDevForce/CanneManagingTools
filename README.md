@@ -1,3 +1,3 @@
 CanneManagingTools
 ==================
-first commit
+Tools for managing competitions of canne de combat.
