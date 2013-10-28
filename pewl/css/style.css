@@ -1,0 +1,359 @@
+a { text-decoration: none; }
+table { border-collapse:collapse; }
+td {	border: 1px solid #ddd; }
+p, h1, h2 { margin: 0; padding: 0; }
+
+.btn-choix-nb-joueurs {
+	width: 60px;
+	height: 30px;
+	padding: 5px 5px 0 5px;
+	margin: 5px;
+	text-align: center;
+	float: left;
+	color: #000;
+}
+.nom-joueur {
+	padding: 0 5px;
+	color: #000;
+	font-family: Arial, sans-serif;
+	font-size: 0.8em;
+}
+.btn-actif {
+	background-color: #BEF574;
+	border: 1px solid #A5D152;
+	color: #556B2F;
+}
+
+.btn-inactif {
+	background-color: #ddd;
+	border: 1px solid #ddd;
+	color: #aaa;
+}
+.btn-inactif:hover {
+	border: 1px solid #aaa;
+	color: #555;
+}
+.clear-both { clear: both; }
+.separator { height: 20px; }
+.case-petite {
+	width: 40px;
+	height: 40px;
+	text-align: center;
+}
+.case-num {
+	text-align: center;
+	color: #aaa;
+	width: 30px;
+	border-right: 1px solid #fff;
+}
+.case-noire {
+	background-color: #ddd;
+}
+.case-blanche {
+	background-color: #fff;
+}
+.case-bleue {
+	background-color: #d4f5a7;
+}
+.case-gris-clair {
+	background-color: #F5F5F5;
+}
+.case-fine {
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	width: 3px;
+}
+.roman {
+	font-family: Times, serif;
+	font-weight: normal;
+}
+.roman-bold {
+	font-family: Times, serif;
+	font-weight: bold;
+}
+.roman-italic {
+	font-family: Times, serif;
+	font-style: italic;
+	font-weight: normal;
+}
+
+.rencontre {
+	margin: 5px 5px;
+	display: block;
+	float: left;
+	width: 40px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-color: #ddd;
+	color: #000;
+	text-align: center;
+}
+.rencontre:visited {
+	color: #000;
+}
+.fond-gris:hover {
+	background-color: #aaa;
+}
+.fond-gris {
+	background-color: #ddd;
+}
+.fond-vert {
+	background-color: #BEF574;
+}
+.fond-vert:hover {
+	background-color: #93bd59;
+}
+.fond-rouge {
+	background-color: #F08080;
+}
+
+.res-titre { 
+	font-size: 2.0em; 
+	padding-bottom: 10px;
+}
+.cell-titre {
+	cursor:default;
+}
+.popup-conteneur {
+	display: none;
+	background-color: rgba(255, 255, 255, 0.85);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2000;
+}
+.popup {
+	background-color: #ddd;
+    position: absolute;
+	width: 300px;
+	margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 20px;
+    text-align: center;
+	box-shadow: 8px 8px 12px #aaa;
+}
+@media screen and (min-width: 800px) {
+	.popup {
+		background-color: #ddd;
+		position: absolute;
+		width: 300px;
+		margin: 0 auto;
+		left: 0;
+		right: 0;
+		top: 40%;
+		text-align: center;
+		box-shadow: 8px 8px 12px #aaa;
+	}
+}
+.popup-titre {
+	font-family: Arial, sans-serif;
+	font-size: 0.8em;
+	background-color: #BEF574;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+.popup-contenu {
+	padding: 10px 5px;
+}
+.popup-contenu input {
+	color: #000;
+	border: 1px solid #556B2F;
+	background-color: #d4f5a7;
+	height: 30px;
+	outline: none;
+	margin: 0;
+	padding: 0 5px;
+}
+.btn-close {
+	float: right;
+	width: 10px;
+	padding: 0 4px 3px 3px;
+	border-radius: 20px;
+	color: #000;
+}
+.btn-close:hover {
+	background-color: #556B2F;
+	color: #d6ebbb;
+}
+.input-score {
+	text-align: center;
+	/*width: 40%;*/
+	width: 100px;
+}
+.place-1 { background-color: #6e8e43; color: #fff; font-size: 1.6em; }
+.place-2 { background-color: #80a54e; color: #fff; font-size: 1.5em; }
+.place-3 { background-color: #93bd59; color: #fff; font-size: 1.4em; }
+.place-4 { background-color: #9fce61; color: #000; font-size: 1.3em; }
+.place-5 { background-color: #b2e66d; color: #000; font-size: 1.2em; }
+.place-6 { background-color: #bceb7d; color: #000; font-size: 1.1em; }
+.place-7 { background-color: #c4eb91; color: #000; font-size: 1.0em; }
+.place-8 { background-color: #cdeba6; color: #000; font-size: 0.9em; }
+.place-9 { background-color: #d6ebbb; color: #000; font-size: 0.8em; }
+.place-10 { background-color: #deebcc; color: #000; font-size: 0.7em; }
+.place-11 { background-color: #e7ebe2; color: #000; font-size: 0.6em; }
+
+.tab-col {
+	width: 16.66%;
+	float: left;
+}
+.tab-ligne {
+	border-bottom: 1px solid #000;
+}
+.tab-place {
+	text-align: center;
+	width: 20px;
+	padding: 0 5px; 
+	float: left;
+}
+.tab-nom {
+	width: 100px;
+	float: left;
+}
+.tab-score {
+	text-align: center;
+	width: 20px;
+	padding: 0 5px; 
+	float: left;
+}
+.tab-match-32 {
+	padding-top: 10px;
+}
+.tab-match-16 {
+}
+.tab-match-elem-16 {
+	position: relative;
+	top: -10px;
+	padding-top: 30px;
+}
+.tab-match-elem-8 {
+	position: relative;
+	top: -30px;
+	padding-top: 80px;
+}
+.tab-match-elem-4 {
+	position: relative;
+	top: -70px;
+	padding-top: 170px;
+}
+.tab-match-elem-2 {
+	position: relative;
+	top: -150px;
+	padding-top: 340px;
+}
+.tab-match-elem-1 {
+	position: relative;
+	top: -310px;
+	padding-top: 670px;
+}
+
+
+#page {
+	width: 1000px;
+	margin: 20px auto;
+}
+#titre {
+	box-shadow: 1px 1px 6px #ddd;
+	padding: 10px 20px;
+}
+#titre h1 {
+	text-transform: uppercase;
+	font-family: Arial, sans-serif;
+	font-size: 2.5em;
+	color: #BEF574;
+}
+#titre h2 {
+	font-variant: small-caps;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	color: #aaa;
+}
+#alerte {
+	display: none;
+	padding: 10px 20px;
+	background-color: #BEF574;
+	border-radius: 5px;
+	font-family: Arial, sans-serif;
+}
+#alerte span {
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #d6ebbb;
+}
+#alerte a {
+	position: relative;
+	top: -140px;
+	left: 200px;
+	font-weight: bold;
+	color: #80a54e;
+}
+#alerte a:hover {
+	color: #000;
+}
+#menu {
+	margin-top: 20px;
+}
+#infobulle {
+	display: none;
+	color: #000;
+	background-color: #fff;
+    position: absolute;
+	width: 250px;
+    left: 50%;
+    right: 0;
+    top: 35%;
+    text-align: center;
+	box-shadow: 8px 8px 12px #aaa;
+}
+#titre-infobulle {
+	font-size: 0.9em;
+	padding-top: 3px;
+	text-transform: uppercase;
+	background-color: #ddd;
+	margin-bottom: 10px;
+}
+#texte-infobulle {
+	padding: 0 5px 5px 5px;
+}
+#table-conteneur {
+	width: 800px;
+	margin: 20px auto;
+}
+#table-conteneur .btn-action {
+	margin: 10px 0;
+	padding: 2px 8px;
+	background-color: #ddd;
+	color: #000;
+	text-align: center;
+}
+#table-conteneur .btn-action:hover {
+	color: #000;
+	background-color: #BEF574;
+}
+#generer-classement {
+	display: none;
+}
+
+#classement {
+	display: none;
+	margin-top: 20px;
+	background-color: #d6ebbb;
+	padding: 10px 5px;
+}
+#classement h2 {
+	text-align: center;
+}
+#tableau {
+	display: none;
+}
+#footer {
+	padding-top: 50px;
+	text-align: center;
+}
+#footer a:link, #footer a:visited {
+	color: #bbb;	
+}
+#footer a:hover {
+	color: #BEF574;
+}
