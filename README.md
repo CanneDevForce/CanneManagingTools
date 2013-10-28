@@ -3,7 +3,7 @@ CanneManagingTools
 Tools for managing competitions of canne de combat.
 
 #Project Overview
-Developping a all-in-one, feature-full competition management tool. It is developped by enthousisats canne fighters and other all aroung the world.
+Developping a all-in-one, feature-full competition management tool. It is developped by enthousisats canne fighters and other all around the world.
 
 
 
