@@ -53,7 +53,7 @@
         </div>
 
         <div class="tab-content">
-            <div class="container tab-pane active fillheight" id='judgeview'>
+            <div class="container tab-pane active" id='judgeview'>
                 <div class='row' id='counters'>
                     <div class='col-xs-5 yellowzone'>
                         <span class='score'>-</span>
@@ -86,13 +86,13 @@
                 </div>
             </div><!-- /.container #judgeview -->
 
-            <div class="container tab-pane fillheight" id='voteview'>
+            <div class="container tab-pane" id='voteview'>
                 <div class='row' >
                     <div class='col-xs-12'>
                         <form action='#' id='votecolor'>
                             <div class='btn-group'>
-                                <button class='btn btn-inactif yellow' >Jaune</button>
-                                <button class='btn btn-inactif blue' >Bleu</button>
+                                <button class='btn yellow' >Jaune</button>
+                                <button class='btn blue' >Bleu</button>
                             </div>
                         </form>
                     </div><!-- /#choixcouleur -->	
@@ -101,15 +101,15 @@
                     <div class='col-xs-12'>
                         <form action='#' id='votevalue'>
                             <div class='btn-group-vertical'>
-                                <button class='btn btn-inactif yes'>Oui</button>
-                                <button class='btn btn-inactif no '>Non</button>
-                                <button class='btn btn-inactif maybe'>Pas vu</button>
+                                <button class='btn yes'>Oui</button>
+                                <button class='btn no '>Non</button>
+                                <button class='btn maybe'>Pas vu</button>
                             </div>
                         </form>
                     </div><!-- /#vote -->	
                 </div>
             </div><!-- /.container voteview -->
-            <div class="container tab-pane fillheight" id='markview'>
+            <div class="container tab-pane" id='markview'>
                 <div class='row' >
                     <div class='col-xs-4 yellowzone'>
                         <form action='#'><button class='evtri' data-fcolor='yellow' data-etype='observation'>Observation</button></form>
@@ -176,7 +176,7 @@
                             </form>
                         </div>
                         <div class='well'>
-                            <form class="form-horizontal" role="form">
+                            <form class="form-horizontal">
                                 <div class="form-group">
                                     <label for="autoSwitchtab" class="col-sm-9 control-label">Bascule automatique après validation</label>
                                     <div class="col-sm-3">
@@ -187,10 +187,19 @@
                             </form>
 
                         </div>
+                        <div class='well'>
+                            <form>
+                                <button class="btn btn-default btn-block">Connecter un serveur</button>
+                                <button class="btn btn-default btn-block">Réinitialiser les compteurs</button>
+                                <button class="btn btn-default btn-block">Choisir un assaut</button>
+                            </form>
+                        </div>
+
+
                     </div>
                     <div class='col-xs-5'>
                         <div class='well'>
-                            <form class="form-horizontal" role="form">
+                            <form class="form-horizontal">
                                 <div class="form-group">
                                     <label for="conServer" class="col-sm-4 control-label">Serveur</label>
                                     <div class="col-sm-8">
@@ -261,16 +270,6 @@
                             </form>
 
                         </div>
-
-                        <div class='well'>
-                            <form role="form">
-                                <button class="btn btn-default btn-block">Connecter un serveur</button>
-                                <button class="btn btn-default btn-block">Réinitialiser les compteurs</button>
-                                <button class="btn btn-default btn-block">Choisir un assaut</button>
-                            </form>
-                        </div>
-
-
 
                     </div>
                 </div>

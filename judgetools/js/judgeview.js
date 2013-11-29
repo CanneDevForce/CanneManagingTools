@@ -138,7 +138,7 @@ function Chronometer()
     this.localStore = function()
     {
         localStorage.setItem("mainChronometer", JSON.stringify(this));
-    }
+    };
     this.localLoad = function()
     {
         // Détection
@@ -163,7 +163,7 @@ function Chronometer()
             this[i] = storeddatas[i];
         }
         this.syncDisplay();
-    }
+    };
     this.gettime = function()
     {
         var time = this.timecounter;
@@ -172,7 +172,7 @@ function Chronometer()
             time += (new Date().getTime() - this.lastStart);
         }
         return time;
-    }
+    };
     this.start = function()
     {
         if (this.lastStart === false)
@@ -185,10 +185,10 @@ function Chronometer()
             this.localStore();
         }
 
-    }
+    };
     this.stop = function()
     {
-        if (this.lastStart != false)
+        if (this.lastStart !== false)
         {
             this.stoplist.push(new Date());
             this.timecounter += (new Date().getTime() - this.lastStart);
@@ -202,14 +202,14 @@ function Chronometer()
             this.localStore();
         }
 
-    }
+    };
     this.reset = function()
     {
         this.timecounter = 0;
         this.syncDisplay();
         displayTime();
         this.localStore();
-    }
+    };
     this.syncDisplay = function()
     {
         if (this.lastStart === false)
@@ -227,7 +227,7 @@ function Chronometer()
             $('#clickers .chtri[data-etype="start"]').parent('form').hide();
             $('#clickers .chtri[data-etype="stop"]').parent('form').show();
         }
-    }
+    };
     this.localLoad();
 
 }
@@ -255,12 +255,12 @@ function ScoreAccumulator()
 
     this.counters = {
         yellow: {touch: 0, remtouch: 0, warning: 0, penalty: 0, observation: 0, yellowcard: 0, redcard: 0},
-        blue: {touch: 0, remtouch: 0, warning: 0, penalty: 0, observation: 0, yellowcard: 0, redcard: 0},
-    }
+        blue: {touch: 0, remtouch: 0, warning: 0, penalty: 0, observation: 0, yellowcard: 0, redcard: 0}
+    };
     this.localStore = function()
     {
         localStorage.setItem("mainScoreAccumulator", JSON.stringify(this));
-    }
+    };
     this.localLoad = function()
     {
         // Détection
@@ -284,8 +284,7 @@ function ScoreAccumulator()
         {
             this[i] = storeddatas[i];
         }
-    }
-
+    };
 
     this.addEvent = function(color, type, details)
     {
@@ -328,11 +327,11 @@ function ScoreAccumulator()
         displayRefnote();
         addLog('' + color + ' : ' + type + '');
         this.localStore();
-    }
+    };
     this.gettouches = function(color)
     {
         return this.counters[color].touch - this.counters[color].remtouch;
-    }
+    };
     this.localLoad();
 }
 
@@ -349,6 +348,8 @@ function displayTouches()
 {
     $('#counters .yellowzone span.score').html(globalScoreAccumulator.gettouches('yellow'));
     $('#counters .bluezone span.score').html(globalScoreAccumulator.gettouches('blue'));
+    $('#clickers .yellowzone .evtri[data-etype="touch"]').html(globalScoreAccumulator.gettouches('yellow'));
+    $('#clickers .bluezone .evtri[data-etype="touch"]').html(globalScoreAccumulator.gettouches('blue'));
 }
 function displayRefnote()
 {
@@ -362,7 +363,6 @@ function displayConfig()
 {
     $('#settingsview input').each(function() {
         var val = $(this).data('cparameter');
-        alert(val+":"+globalConfiguration[val]);
         $(this).val(globalConfiguration[val]);
     });
 }
@@ -394,9 +394,9 @@ $(document).ready(function() {
         sizeadjust();
     });
     $('#settingsview input').keyup(function() {
-        globalConfiguration.setValue($(this).data('cparameter'),$(this).val()); 
-        addLog(print_r(globalConfiguration));
-        addLog((localStorage.getItem('mainConfiguration')));
+        globalConfiguration.setValue($(this).data('cparameter'), $(this).val());
+        //addLog(print_r(globalConfiguration));
+        //addLog((localStorage.getItem('mainConfiguration')));
         return false;
     });
     $('button.evtri').click(function() {
@@ -452,21 +452,21 @@ $(document).ready(function() {
 
 /****
  * TOREMOVE
- ***/
-function print_r(theObj) {
-    var win_print_r = "";
-    for (var p in theObj) {
-        var _type = typeof(theObj[p]);
-        if ((_type.indexOf("array") >= 0) || (_type.indexOf("object") >= 0)) {
-            win_print_r += "<li>";
-            win_print_r += "[" + _type + "] =>" + p;
-            win_print_r += "<ul>";
-            win_print_r += print_r(theObj[p]);
-            win_print_r += "</ul></li>";
-        } else {
-            win_print_r += "<li>[" + p + "] =>" + theObj[p] + "</li>";
-        }
-    }
-    return win_print_r;
-}
-/**/
+ ***
+ function print_r(theObj) {
+ var win_print_r = "";
+ for (var p in theObj) {
+ var _type = typeof(theObj[p]);
+ if ((_type.indexOf("array") >= 0) || (_type.indexOf("object") >= 0)) {
+ win_print_r += "<li>";
+ win_print_r += "[" + _type + "] =>" + p;
+ win_print_r += "<ul>";
+ win_print_r += print_r(theObj[p]);
+ win_print_r += "</ul></li>";
+ } else {
+ win_print_r += "<li>[" + p + "] =>" + theObj[p] + "</li>";
+ }
+ }
+ return win_print_r;
+ }
+ /**/

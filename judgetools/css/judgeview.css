@@ -48,8 +48,8 @@ button.evtri,button.chtri{width:100%;}
 #voteview button {background-color:#000;color:#fff;font-weight:bold;font-size:30px;}
 #voteview #votecolor .btn-group{width:100%;}
 #voteview #votecolor .btn-group button{width:50%;padding:5%;}
-#voteview #votecolor button.yellow:hover,#voteview #votecolor button.yellow:focus{background-color:#ffa;color:#000;}
-#voteview #votecolor button.blue:hover,#voteview #votecolor button.blue:focus{background-color:#aaf;color:#000;}
+#voteview #votecolor button.yellow:hover,#voteview #votecolor button.yellow:focus{background-color:#ff5;color:#000;}
+#voteview #votecolor button.blue:hover,#voteview #votecolor button.blue:focus{background-color:#77f;color:#000;}
 #voteview #votevalue .btn-group-vertical {width:100%;padding:5%;}
 #voteview #votevalue .btn-group-vertical button{padding:5%;}
 #voteview #votevalue button.yes:hover,#voteview #votevalue button.yes:focus{background-color:#0f0;color:#000;}
