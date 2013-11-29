@@ -6,8 +6,21 @@
  **/
 function Configuration()
 {
-    this.role='all';
-    this.autoswitchtab=true;
+    this.userName=false;
+    this.userAccesscode=false;
+    this.userRole='all';
+    this.autoSwitchtab=true;
+    this.conServer=false;
+    this.conGathering=false;
+    this.conCompetition=false;
+    this.conGroup=false;
+    this.conAssault=false;
+    this.assaultYellowName=false;
+    this.assaultBlueName=false;
+    this.assaultRoundNumber=false;
+    this.assaultRoundDuration=false;
+    this.assaultRecoveryDuration=false;
+        
 }
 
 /**
