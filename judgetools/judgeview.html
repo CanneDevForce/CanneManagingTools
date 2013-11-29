@@ -43,7 +43,8 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#judgeview" data-toggle="tab" id='tabJudLnk'>Juge</a></li>
-                        <li><a href="#refereeview" data-toggle="tab" id='tabRefLnk'>1er</a></li>
+                        <li><a href="#voteview" data-toggle="tab" id='tabVotLnk'>Vote</a></li>
+                        <li><a href="#refereeview" data-toggle="tab" id='tabRefLnk'>Chrono</a></li>
                         <li><a href="#settings" data-toggle="tab" id='tabSetLnk'>Configuration</a></li>
                         <li><a href="#logs" data-toggle="tab" id='tabLogLnk'>logs</a></li>
                     </ul>
@@ -81,6 +82,9 @@
                     </div><!-- /#blue -->	
                 </div>
             </div><!-- /.container #judgeview -->
+
+            <div class="container tab-pane fillheight" id='voteview'>
+            </div><!-- /.container voteview -->
 
             <div class="container tab-pane fillheight" id='refereeview'>
                 <div class='row' >
@@ -212,6 +216,38 @@
                                         <input type="email" class="form-control" id="id" placeholder="Tata">
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="id" class="col-sm-4 control-label">nombre de reprises</label>
+                                    <div class="col-sm-8">
+                                        <input type="email" class="form-control" id="id" placeholder="3">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id" class="col-sm-4 control-label">durée d'une reprise</label>
+                                    <div class="col-sm-8">
+                                        <input type="email" class="form-control" id="id" placeholder="1:30">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id" class="col-sm-4 control-label">temps de récupération</label>
+                                    <div class="col-sm-8">
+                                        <input type="email" class="form-control" id="id" placeholder="60'">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id" class="col-sm-4 control-label">Alerte "équipez vous"</label>
+                                    <div class="col-sm-8">
+                                        <input type="email" class="form-control" id="id" placeholder="15'">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id" class="col-sm-4 control-label">Alerte "tireur au centre"</label>
+                                    <div class="col-sm-8">
+                                        <input type="email" class="form-control" id="id" placeholder="5'">
+                                    </div>
+                                </div>
+
 
                             </form>
 
