@@ -281,6 +281,7 @@ function Chronometer()
         this.readyWarningEmited = false;
         this.equipmentWarningEmited = false;
 
+        $("#clickers .commonzone button").removeClass( "btn-info btn-warning btn-danger btn-default" ).addClass('btn-default');
         this.start();
         displayTime();
         addLog('nextStage (' + this.roundlist.length + ')');
@@ -294,6 +295,13 @@ function Chronometer()
 /**
  *  DS: SCORE EVENT
  **/
+/**
+ * 
+ * @param {type} color
+ * @param {type} type
+ * @param {type} details
+ * @returns {ScoreEvent}
+ */
 function ScoreEvent(color, type, details)
 {
     this.color = color;
@@ -405,7 +413,7 @@ function ScoreAccumulator()
         displayRefnote();
         this.localStore();
 
-    }
+    };
     this.localLoad();
 }
 
@@ -422,16 +430,19 @@ function displayTime()
     {
         addLog(remainingTime);
         playSound('#endSound');
+        $("#clickers .commonzone button").removeClass( "btn-info btn-warning btn-danger btn-default" ).addClass('btn-danger');
         globalChronometer.endWarningEmited = true;
     }
     else if (remainingTime <= 5 * 1000 && true === globalChronometer.isInRecovery() && false === globalChronometer.readyWarningEmited)
     {
         playSound('#readySound');
+        $("#clickers .commonzone button").removeClass( "btn-info btn-warning btn-danger btn-default" ).addClass('btn-warning');
         globalChronometer.readyWarningEmited = true;
     }
     else if (remainingTime <= 15 * 1000 && true === globalChronometer.isInRecovery() && false === globalChronometer.equipmentWarningEmited)
     {
         playSound('#equipmentSound');
+        $("#clickers .commonzone button").removeClass( "btn-info btn-warning btn-danger btn-default" ).addClass('btn-info');
         globalChronometer.equipmentWarningEmited = true;
     }
 }

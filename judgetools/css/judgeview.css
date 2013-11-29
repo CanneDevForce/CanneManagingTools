@@ -5,6 +5,8 @@ button.evtri,button.chtri{width:100%;}
 .bluezone button{background-color:#aaf;color:#000;}
 .yellowzone .score{background-color:#000;color:#ff0;}
 .bluezone .score{background-color:#000;color:#00f;}
+/* made to be calculater by JS */
+.fillheight{height:100%;}
 
 /** JUDGE PANE */
 
