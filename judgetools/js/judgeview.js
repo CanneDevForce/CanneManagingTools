@@ -2,6 +2,15 @@
  * DATAS STRUCTURES
  ***/
 /**
+ *  DS: CONFIGURATION
+ **/
+function Configuration()
+{
+    this.role='all';
+    this.autoswitchtab=true;
+}
+
+/**
  *  DS: CHRONOMETER
  **/
 function Chronometer()
@@ -89,9 +98,11 @@ function Chronometer()
     }
     this.syncDisplay = function()
     {
-        if (this.lastStart == false)
+        if (this.lastStart === false)
         {
             clearInterval(this.interv);
+            $('#clickers .chtri[data-etype="start"]').parent('form').show();
+            $('#clickers .chtri[data-etype="stop"]').parent('form').hide();
         }
         else
         {
@@ -99,6 +110,8 @@ function Chronometer()
                 //@todo gérer le dépassement
                 displayTime();
             }, 500);
+            $('#clickers .chtri[data-etype="start"]').parent('form').hide();
+            $('#clickers .chtri[data-etype="stop"]').parent('form').show();
         }
     }
     this.localLoad();
@@ -163,12 +176,12 @@ function ScoreAccumulator()
     this.addEvent = function(color, type, details)
     {
         // controles particulier
-        if ('remtouch' == type && this.counters[color].touch <= this.counters[color].remtouch)
+        if ('remtouch' === type && this.counters[color].touch <= this.counters[color].remtouch)
         {
             addLog('Impossible: ' + color + ' : ' + type + '');
             return false;
         }
-        if ('redcard' == type || 'yellowcard' == type || 'warning' == type || 'penalty' == type)
+        if ('redcard' === type || 'yellowcard' === type || 'warning' === type || 'penalty' === type)
         {
             var ok = window.confirm('Confirmez le ' + type + " pour " + color);
             if (!ok)
@@ -180,7 +193,7 @@ function ScoreAccumulator()
                 
             }
         }
-        if ('observation' == type)
+        if ('observation' === type)
         {
             
         }
@@ -225,7 +238,7 @@ function displayTouches()
 }
 function displayRefnote()
 {
-    $('#refereeview .score').each(function() {
+    $('#markview .score').each(function() {
         var color = $(this).data('fcolor');
         var type = $(this).data('etype');
         $(this).html(globalScoreAccumulator.counters[color][type]);
@@ -257,6 +270,10 @@ function setRole(role)
         $('#tabMarLnk').show();
         $('#tabConLnk').show();
         $('#tabLogLnk').show();
+        $('#counters .commonzone div').show();
+        $('#clickers .commonzone button').parent('form').show();
+        globalChronometer.syncDisplay();
+        globalConfiguration.role='all';        
         
     }
     else if('judge1'==role)
@@ -266,46 +283,30 @@ function setRole(role)
         $('#tabMarLnk').show();
         $('#tabConLnk').show();
         $('#tabLogLnk').hide();
+
+        $('#counters .commonzone div').show();
+        $('#clickers .commonzone button').parent('form').show();
+        globalChronometer.syncDisplay();
+        globalConfiguration.role='judge1';        
     }
-    else if('judge2'==role)
+    else if('judge2'==role || 'judge3'==role)
     {
+        $('#tabJudLnk').tab('show');
         $('#tabJudLnk').show();
         $('#tabVotLnk').show();
         $('#tabMarLnk').hide();
         $('#tabConLnk').show();
         $('#tabLogLnk').hide();
         
-    }
-    else if('judge3'==role)
-    {
-        $('#tabJudLnk').show();
-        $('#tabVotLnk').show();
-        $('#tabMarLnk').hide();
-        $('#tabConLnk').show();
-        $('#tabLogLnk').hide();
-        
-    }
-    else if('referee'==role)
-    {
-        $('#tabJudLnk').hide();
-        $('#tabVotLnk').hide();
-        $('#tabMarLnk').show();
-        $('#tabConLnk').show();
-        $('#tabLogLnk').hide();
-        
-    }
-    else if('chrono'==role)
-    {
-        $('#tabJudLnk').hide();
-        $('#tabVotLnk').hide();
-        $('#tabMarLnk').show();
-        $('#tabConLnk').show();
-        $('#tabLogLnk').hide();
-        
+        $('#counters .commonzone div').hide();
+        $('#clickers .commonzone button').parent('form').hide();        
+        $('#clickers .commonzone button[data-etype="vote"]').parent('form').show();
+
+        globalConfiguration.role=role;
     }
     else 
     {
-        
+        alert('Unknown role');
     }
     
 }
@@ -318,6 +319,7 @@ $(document).ready(function() {
     // GLOBAL VARIABLES
     globalChronometer = new Chronometer();
     globalScoreAccumulator = new ScoreAccumulator();
+    globalConfiguration= new Configuration();
 
     // LISTENERS
     $(window).resize(function() {
@@ -328,12 +330,34 @@ $(document).ready(function() {
         return false;
     });
     $('button.chtri').click(function() {
-        if ($(this).data('etype') == 'start')
+        if ($(this).data('etype') === 'start')
+        {    
             globalChronometer.start();
-        else if ($(this).data('etype') == 'stop')
+            if(globalConfiguration.autoswitchtab)
+                $('#tabJudLnk').tab('show');
+                
+        }
+        else if ($(this).data('etype') === 'stop')
+        {
             globalChronometer.stop();
-        else if ($(this).data('etype') == 'reset')
+            if(globalConfiguration.autoswitchtab)
+            {
+                if('judge1'===globalConfiguration.role)
+                    $('#tabMarLnk').tab('show');
+                else
+                    $('#tabVotLnk').tab('show');
+            }
+        }
+        else if ($(this).data('etype') === 'reset')
+        {
             globalChronometer.reset();
+            if(globalConfiguration.autoswitchtab)
+                    $('#tabVotLnk').tab('show');
+        }
+        else if ($(this).data('etype') === 'vote')
+        {
+            $('#tabVotLnk').tab('show');
+        }
         else
             alert($(this).data('etype'));
     });
