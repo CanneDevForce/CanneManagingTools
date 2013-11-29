@@ -60,8 +60,8 @@
                     </div><!-- /#yellow -->	
                     <div class='col-xs-2 commonzone'>
                         <div>
-                        <span class='clock hidden-xs'>--</span>
-                        <span class='clock visible-xs'>-</span>
+                            <span class='clock hidden-xs'>--</span>
+                            <span class='clock visible-xs'>-</span>
                         </div>
                     </div><!-- /#neutral -->	
                     <div class='col-xs-5 bluezone'>
@@ -146,25 +146,25 @@
                 <div class='row' >
                     <div class='col-xs-7'>
                         <div class='well'>
-                            <form class="form-horizontal" role="form">
+                            <form class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="id" class="col-sm-3 control-label">Nom de l'arbitre</label>
+                                    <label for="userName" class="col-sm-3 control-label">Nom de l'arbitre</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="id" placeholder="Nom de l'arbitre">
+                                        <input type="text" class="form-control" id="userName" data-cparameter='userName' placeholder="Nom de l'utilisateur" >
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="id" class="col-sm-3 control-label">Code d'accès</label>
+                                    <label for="userAccesscode" class="col-sm-3 control-label">Code d'accès</label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control" id="id" placeholder="Code d'accès">
+                                        <input type="password" class="form-control" id="userAccesscode" data-cparameter='userAccesscode' placeholder="Code d'accès">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="id" class="col-sm-3 control-label">Rôle</label>
+                                    <label for="userRole" class="col-sm-3 control-label" data-cparameter='userRole' >Rôle</label>
                                     <div class="col-sm-9">
-                                        <select class="form-control" id="confSelectRole">
+                                        <select class="form-control" id="userRole">
                                             <option  value='all'>Tous</option>
                                             <option value='judge1'>Juge 1</option>
                                             <option value='judge2'>Juge 2</option>
@@ -178,18 +178,12 @@
                         <div class='well'>
                             <form class="form-horizontal" role="form">
                                 <div class="form-group">
-                                    <label for="id" class="col-sm-9 control-label">Bascule automatique après validation</label>
+                                    <label for="autoSwitchtab" class="col-sm-9 control-label">Bascule automatique après validation</label>
                                     <div class="col-sm-3">
-                                        <input type="email" class="form-control" id="id" placeholder="ll">
+                                        <input type="email" class="form-control" id="autoSwitchtab" data-cparameter='autoSwitchtab' placeholder="ll">
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="id" class="col-sm-9 control-label">Relance automatique du chrono sur retour</label>
-                                    <div class="col-sm-3">
-                                        <input type="email" class="form-control" id="id" placeholder="ll">
-                                    </div>
-                                </div>
                             </form>
 
                         </div>
@@ -198,63 +192,69 @@
                         <div class='well'>
                             <form class="form-horizontal" role="form">
                                 <div class="form-group">
-                                    <label for="id" class="col-sm-4 control-label">Serveur</label>
+                                    <label for="conServer" class="col-sm-4 control-label">Serveur</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="id" placeholder="canneMT.fis.org">
+                                        <input type="email" class="form-control" id="conServer" data-cparameter='conServer' placeholder="canneMT.fis.org">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="id" class="col-sm-4 control-label">Compétition</label>
+                                    <label for="conGathering" class="col-sm-4 control-label">Evenement</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="id" placeholder="world championship">
+                                        <input type="email" class="form-control" id="conGathering" data-cparameter='conGathering' placeholder="world championship">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="conCompetition" class="col-sm-4 control-label">Compétition</label>
+                                    <div class="col-sm-8">
+                                        <input type="email" class="form-control" id="conCompetition" data-cparameter='conCompetition' placeholder="world championship">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="id" class="col-sm-4 control-label">Groupe</label>
+                                    <label for="conGroup" class="col-sm-4 control-label">Groupe</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="id" placeholder="pool A1">
+                                        <input type="email" class="form-control" id="conGroup" data-cparameter='conGroup' placeholder="pool A1">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="id" class="col-sm-4 control-label">Assaut</label>
+                                    <label for="conAssault" class="col-sm-4 control-label">Assaut</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="id" placeholder="A1-22">
+                                        <input type="email" class="form-control" id="conAssault" data-cparameter='conAssault' placeholder="A1-22">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="id" class="col-sm-4 control-label">Tireur Jaune</label>
+                                    <label for="assaultYellowName" class="col-sm-4 control-label">Tireur Jaune</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="id" placeholder="Toto">
+                                        <input type="email" class="form-control" id="assaultYellowName" data-cparameter='assaultYellowName' placeholder="Madame Jaune">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="id" class="col-sm-4 control-label">Tireur Bleu</label>
+                                    <label for="assaultBlueName" class="col-sm-4 control-label">Tireur Bleu</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="id" placeholder="Tata">
+                                        <input type="email" class="form-control" id="assaultBlueName" data-cparameter='assaultBlueName' placeholder="Monsieur Bleu">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="id" class="col-sm-4 control-label">nombre de reprises</label>
+                                    <label for="assaultRoundNumber" class="col-sm-4 control-label">nombre de reprises</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="id" placeholder="3">
+                                        <input type="email" class="form-control" id="assaultRoundNumber" data-cparameter='assaultRoundNumber' placeholder="3">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="id" class="col-sm-4 control-label">durée d'une reprise</label>
+                                    <label for="assaultRoundDuration" class="col-sm-4 control-label">durée d'une reprise</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="id" placeholder="1:30">
+                                        <input type="email" class="form-control" id="assaultRoundDuration" data-cparameter='assaultRoundDuration' placeholder="1:30">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="id" class="col-sm-4 control-label">temps de récupération</label>
+                                    <label for="assaultRecoveryDuration" class="col-sm-4 control-label">temps de récupération</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="id" placeholder="60'">
+                                        <input type="email" class="form-control" id="assaultRecoveryDuration" data-cparameter='assaultRecoveryDuration' placeholder="60'">
                                     </div>
                                 </div>
 

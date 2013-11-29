@@ -6,21 +6,91 @@
  **/
 function Configuration()
 {
-    this.userName=false;
-    this.userAccesscode=false;
-    this.userRole='all';
-    this.autoSwitchtab=true;
-    this.conServer=false;
-    this.conGathering=false;
-    this.conCompetition=false;
-    this.conGroup=false;
-    this.conAssault=false;
-    this.assaultYellowName=false;
-    this.assaultBlueName=false;
-    this.assaultRoundNumber=false;
-    this.assaultRoundDuration=false;
-    this.assaultRecoveryDuration=false;
-        
+    this.userName = false;
+    this.userAccesscode = false;
+    this.userRole = 'all';
+    this.autoSwitchtab = true;
+    this.conServer = false;
+    this.conGathering = false;
+    this.conCompetition = false;
+    this.conGroup = false;
+    this.conAssault = false;
+    this.assaultYellowName = false;
+    this.assaultBlueName = false;
+    this.assaultRoundNumber = false;
+    this.assaultRoundDuration = false;
+    this.assaultRecoveryDuration = false;
+
+    this.setValue = function(key, value)
+    {
+        // Assignment
+        this[key] = value;
+        // listening
+        if ('userRole' === key)
+        {
+            if ('all' === value)
+            {
+                $('#tabJudLnk').show();
+                $('#tabVotLnk').show();
+                $('#tabMarLnk').show();
+                $('#tabConLnk').show();
+                $('#tabLogLnk').show();
+                $('#counters .commonzone div').show();
+                $('#clickers .commonzone button').parent('form').show();
+                globalChronometer.syncDisplay();
+            }
+            else if ('judge1' === value)
+            {
+                $('#tabJudLnk').show();
+                $('#tabVotLnk').hide();
+                $('#tabMarLnk').show();
+                $('#tabConLnk').show();
+                $('#tabLogLnk').hide();
+
+                $('#counters .commonzone div').show();
+                $('#clickers .commonzone button').parent('form').show();
+                globalChronometer.syncDisplay();
+            }
+            else if ('judge2' === value || 'judge3' === value)
+            {
+                $('#tabJudLnk').tab('show');
+                $('#tabJudLnk').show();
+                $('#tabVotLnk').show();
+                $('#tabMarLnk').hide();
+                $('#tabConLnk').show();
+                $('#tabLogLnk').hide();
+
+                $('#counters .commonzone div').hide();
+                $('#clickers .commonzone button').parent('form').hide();
+                $('#clickers .commonzone button[data-etype="vote"]').parent('form').show();
+            }
+            else
+            {
+                alert('Unknown role');
+            }
+
+        }
+        else if ('' === key)
+        {
+
+        }
+        else if ('' === key)
+        {
+
+        }
+        else if ('' === key)
+        {
+
+        }
+        else if ('' === key)
+        {
+
+        }
+        else
+        {
+        }
+
+    }
 }
 
 /**
@@ -41,7 +111,7 @@ function Chronometer()
     this.localLoad = function()
     {
         // Détection
-        if (typeof localStorage == 'undefined')
+        if (typeof localStorage === 'undefined')
         {
             alert("localStorage n'est pas supporté");
             return false;
@@ -49,7 +119,7 @@ function Chronometer()
         // Récupération de la valeur dans web storage
         var storeddatas = localStorage.getItem('mainChronometer');
         // Vérification de la présence du compteur
-        if (storeddatas == null)
+        if (storeddatas === null)
         {
             alert("Bienvenu! Un nouveau chrono a été créé;");
             this.localStore();
@@ -163,7 +233,7 @@ function ScoreAccumulator()
     this.localLoad = function()
     {
         // Détection
-        if (typeof localStorage == 'undefined')
+        if (typeof localStorage === 'undefined')
         {
             alert("localStorage n'est pas supporté");
             return false;
@@ -171,7 +241,7 @@ function ScoreAccumulator()
         // Récupération de la valeur dans web storage
         var storeddatas = localStorage.getItem('mainScoreAccumulator');
         // Vérification de la présence du compteur
-        if (storeddatas == null)
+        if (storeddatas === null)
         {
             alert("Bienvenu! Un nouveau jeu de ScoreAccumulator a été créé;");
             this.localStore();
@@ -203,21 +273,21 @@ function ScoreAccumulator()
                 return false;
             } else
             {
-                
+
             }
         }
         if ('observation' === type)
         {
-            
+
         }
 
         // structure
         var event = new ScoreEvent(color, type, details);
         this.eventList.push(event);
 
-        if (undefined == this.counters[color])
+        if (undefined === this.counters[color])
             this.counters[color] = new Array();
-        if (undefined == this.counters[color][type])
+        if (undefined === this.counters[color][type])
             this.counters[color][type] = 0;
         this.counters[color][type]++;
         //@todo: gérer l'accès réseau pour transmettre les informations.
@@ -271,60 +341,6 @@ function sizeadjust()
 
 }
 
-/**
- * DF: display adjustment by role or per moment
- */
-function setRole(role)
-{
-    if('all'==role)
-    {
-        $('#tabJudLnk').show();
-        $('#tabVotLnk').show();
-        $('#tabMarLnk').show();
-        $('#tabConLnk').show();
-        $('#tabLogLnk').show();
-        $('#counters .commonzone div').show();
-        $('#clickers .commonzone button').parent('form').show();
-        globalChronometer.syncDisplay();
-        globalConfiguration.role='all';        
-        
-    }
-    else if('judge1'==role)
-    {
-        $('#tabJudLnk').show();
-        $('#tabVotLnk').hide();
-        $('#tabMarLnk').show();
-        $('#tabConLnk').show();
-        $('#tabLogLnk').hide();
-
-        $('#counters .commonzone div').show();
-        $('#clickers .commonzone button').parent('form').show();
-        globalChronometer.syncDisplay();
-        globalConfiguration.role='judge1';        
-    }
-    else if('judge2'==role || 'judge3'==role)
-    {
-        $('#tabJudLnk').tab('show');
-        $('#tabJudLnk').show();
-        $('#tabVotLnk').show();
-        $('#tabMarLnk').hide();
-        $('#tabConLnk').show();
-        $('#tabLogLnk').hide();
-        
-        $('#counters .commonzone div').hide();
-        $('#clickers .commonzone button').parent('form').hide();        
-        $('#clickers .commonzone button[data-etype="vote"]').parent('form').show();
-
-        globalConfiguration.role=role;
-    }
-    else 
-    {
-        alert('Unknown role');
-    }
-    
-}
-
-
 /***
  * INITIALISATION
  ***/
@@ -332,11 +348,16 @@ $(document).ready(function() {
     // GLOBAL VARIABLES
     globalChronometer = new Chronometer();
     globalScoreAccumulator = new ScoreAccumulator();
-    globalConfiguration= new Configuration();
+    globalConfiguration = new Configuration();
 
     // LISTENERS
     $(window).resize(function() {
         sizeadjust();
+    });
+    $('#settings input').keyup(function() {
+        globalConfiguration[$(this).data('cparameter')] = $(this).val();
+        addLog(print_r(globalConfiguration));
+        return false;
     });
     $('button.evtri').click(function() {
         globalScoreAccumulator.addEvent($(this).data('fcolor'), $(this).data('etype'), $(this).data('details'));
@@ -344,18 +365,18 @@ $(document).ready(function() {
     });
     $('button.chtri').click(function() {
         if ($(this).data('etype') === 'start')
-        {    
+        {
             globalChronometer.start();
-            if(globalConfiguration.autoswitchtab)
+            if (globalConfiguration.autoswitchtab)
                 $('#tabJudLnk').tab('show');
-                
+
         }
         else if ($(this).data('etype') === 'stop')
         {
             globalChronometer.stop();
-            if(globalConfiguration.autoswitchtab)
+            if (globalConfiguration.autoswitchtab)
             {
-                if('judge1'===globalConfiguration.role)
+                if ('judge1' === globalConfiguration.role)
                     $('#tabMarLnk').tab('show');
                 else
                     $('#tabVotLnk').tab('show');
@@ -364,8 +385,8 @@ $(document).ready(function() {
         else if ($(this).data('etype') === 'reset')
         {
             globalChronometer.reset();
-            if(globalConfiguration.autoswitchtab)
-                    $('#tabVotLnk').tab('show');
+            if (globalConfiguration.autoswitchtab)
+                $('#tabVotLnk').tab('show');
         }
         else if ($(this).data('etype') === 'vote')
         {
@@ -374,10 +395,7 @@ $(document).ready(function() {
         else
             alert($(this).data('etype'));
     });
-    $('#confSelectRole').change(function() {
-        setRole($(this).val());
-        return false;
-    });
+
 
     // VIEW SETUP
     sizeadjust();
@@ -386,13 +404,14 @@ $(document).ready(function() {
     displayRefnote();
     // toremove
 
-});
+}
+);
 
 
 
 /****
  * TOREMOVE
- ***
+ ***/
  function print_r(theObj) {    
  var win_print_r = "";   
  for(var p in theObj){  
