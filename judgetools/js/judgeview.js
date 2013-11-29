@@ -21,10 +21,40 @@ function Configuration()
     this.assaultRoundDuration = false;
     this.assaultRecoveryDuration = false;
 
+    this.localStore = function()
+    {
+        localStorage.setItem("mainConfiguration", JSON.stringify(this));
+    };
+    this.localLoad = function()
+    {
+        // Détection
+        if (typeof localStorage === 'undefined')
+        {
+            alert("localStorage n'est pas supporté");
+            return false;
+        }
+        // Récupération de la valeur dans web storage
+        var storeddatas = localStorage.getItem('mainConfiguration');
+        // Vérification de la présence du compteur
+        if (storeddatas === null)
+        {
+            alert("Bienvenue! Une nouvelle Configuration a été créé;");
+            this.localStore();
+            return false;
+        }
+        // Si preexiste, on convertit en nombre entier la chaîne de texte qui fut stockée
+        storeddatas = JSON.parse(storeddatas);
+        for (var i in storeddatas)
+        {
+            this[i] = storeddatas[i];
+        }
+    };
+
     this.setValue = function(key, value)
     {
         // Assignment
         this[key] = value;
+        this.localStore();
         // listening
         if ('userRole' === key)
         {
@@ -90,7 +120,8 @@ function Configuration()
         {
         }
 
-    }
+    };
+    this.localLoad();
 }
 
 /**
@@ -121,7 +152,7 @@ function Chronometer()
         // Vérification de la présence du compteur
         if (storeddatas === null)
         {
-            alert("Bienvenu! Un nouveau chrono a été créé;");
+            alert("Bienvenue! Un nouveau chrono a été créé;");
             this.localStore();
             return false;
         }
@@ -243,7 +274,7 @@ function ScoreAccumulator()
         // Vérification de la présence du compteur
         if (storeddatas === null)
         {
-            alert("Bienvenu! Un nouveau jeu de ScoreAccumulator a été créé;");
+            alert("Bienvenue! Un nouveau jeu de ScoreAccumulator a été créé;");
             this.localStore();
             return false;
         }
@@ -327,6 +358,14 @@ function displayRefnote()
         $(this).html(globalScoreAccumulator.counters[color][type]);
     });
 }
+function displayConfig()
+{
+    $('#settingsview input').each(function() {
+        var val = $(this).data('cparameter');
+        alert(val+":"+globalConfiguration[val]);
+        $(this).val(globalConfiguration[val]);
+    });
+}
 function addLog(text)
 {
     $('#logs ul').append('<li>' + globalChronometer.gettime() + ' -- ' + text + "</li>");
@@ -354,9 +393,10 @@ $(document).ready(function() {
     $(window).resize(function() {
         sizeadjust();
     });
-    $('#settings input').keyup(function() {
-        globalConfiguration[$(this).data('cparameter')] = $(this).val();
+    $('#settingsview input').keyup(function() {
+        globalConfiguration.setValue($(this).data('cparameter'),$(this).val()); 
         addLog(print_r(globalConfiguration));
+        addLog((localStorage.getItem('mainConfiguration')));
         return false;
     });
     $('button.evtri').click(function() {
@@ -402,6 +442,7 @@ $(document).ready(function() {
     displayTime();
     displayTouches();
     displayRefnote();
+    displayConfig();
     // toremove
 
 }
@@ -412,20 +453,20 @@ $(document).ready(function() {
 /****
  * TOREMOVE
  ***/
- function print_r(theObj) {    
- var win_print_r = "";   
- for(var p in theObj){  
- var _type = typeof(theObj[p]);  
- if( (_type.indexOf("array") >= 0) || (_type.indexOf("object") >= 0) ){  
- win_print_r += "<li>";  
- win_print_r += "["+_type+"] =>"+p;  
- win_print_r += "<ul>";  
- win_print_r += print_r(theObj[p]);  
- win_print_r += "</ul></li>";  
- } else {  
- win_print_r += "<li>["+p+"] =>"+theObj[p]+"</li>";  
- }  
- }  
- return win_print_r;  
- }
- /**/
+function print_r(theObj) {
+    var win_print_r = "";
+    for (var p in theObj) {
+        var _type = typeof(theObj[p]);
+        if ((_type.indexOf("array") >= 0) || (_type.indexOf("object") >= 0)) {
+            win_print_r += "<li>";
+            win_print_r += "[" + _type + "] =>" + p;
+            win_print_r += "<ul>";
+            win_print_r += print_r(theObj[p]);
+            win_print_r += "</ul></li>";
+        } else {
+            win_print_r += "<li>[" + p + "] =>" + theObj[p] + "</li>";
+        }
+    }
+    return win_print_r;
+}
+/**/
