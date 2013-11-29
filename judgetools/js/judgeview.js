@@ -139,25 +139,6 @@ function Chronometer()
     this.readyWarningEmited = false;
     this.equipmentWarningEmited = false;
 
-    this.getRemainingTime = function()
-    {
-        // round
-        if (this.isInRecovery())
-        {
-            return globalConfiguration.assaultRecoveryDuration*1000 - this.gettime();
-        }
-        // recovery
-        {
-            return globalConfiguration.assaultRoundDuration*1000 - this.gettime();
-        }
-    };
-    this.isInRecovery = function()
-    {
-        if (this.roundlistlength % 2 === 0)
-            return true;
-        else
-            return false;
-    };
 
     this.localStore = function()
     {
@@ -224,15 +205,30 @@ function Chronometer()
             displayTime();
             addLog('chrono stop');
             this.localStore();
+            if (this.getRemainingTime() < 0)
+            {
+                var question = 'Ce stop termine-t-il la reprise?';
+                if (this.isInRecovery())
+                    question = 'Ce stop termine-t-il le temps de récupération?';
+                var ok = window.confirm(question);
+                if (ok)
+                    this.endOfStage();
+            }//ENDOF stage end test
         }
 
     };
     this.reset = function()
     {
+        this.stop();
+        this.timecounter = 0;
+        this.lastStart = false;
+        this.startlist = new Array();
+        this.stoplist = new Array();
+        this.roundlist = new Array();
         this.endWarningEmited = false;
         this.readyWarningEmited = false;
         this.equipmentWarningEmited = false;
-        this.timecounter = 0;
+
         this.syncDisplay();
         displayTime();
         this.localStore();
@@ -255,6 +251,42 @@ function Chronometer()
             $('#clickers .chtri[data-etype="stop"]').parent('form').show();
         }
     };
+    this.isInRecovery = function()
+    {
+        if (this.roundlist.length % 2 === 0)
+            return false;
+        else
+            return true;
+    };
+    this.getRemainingTime = function()
+    {
+        // round
+        if (this.isInRecovery())
+        {
+            return globalConfiguration.assaultRecoveryDuration * 1000 - this.gettime();
+        }
+        // recovery
+        {
+            return globalConfiguration.assaultRoundDuration * 1000 - this.gettime();
+        }
+    };
+    this.endOfStage = function()
+    {
+        this.stop();
+        this.roundlist.push(this.timecounter);
+
+        this.timecounter = 0;
+        this.lastStart = false;
+        this.endWarningEmited = false;
+        this.readyWarningEmited = false;
+        this.equipmentWarningEmited = false;
+
+        this.start();
+        displayTime();
+        addLog('nextStage (' + this.roundlist.length + ')');
+        this.localStore();
+    };
+
     this.localLoad();
 
 }
@@ -328,7 +360,8 @@ function ScoreAccumulator()
             {
                 addLog('Annulé: ' + color + ' : ' + type + '');
                 return false;
-            } else
+            }
+            else
             {
 
             }
@@ -387,16 +420,16 @@ function displayTime()
     var remainingTime = globalChronometer.getRemainingTime();
     if (remainingTime <= 0 && false === globalChronometer.endWarningEmited)
     {
-        addLog(remainingTime);        
+        addLog(remainingTime);
         playSound('#endSound');
         globalChronometer.endWarningEmited = true;
     }
-    else if (remainingTime <= 5*1000 && true === globalChronometer.isInRecovery() && false === globalChronometer.readyWarningEmited)
+    else if (remainingTime <= 5 * 1000 && true === globalChronometer.isInRecovery() && false === globalChronometer.readyWarningEmited)
     {
         playSound('#readySound');
         globalChronometer.readyWarningEmited = true;
     }
-    else if (remainingTime <= 15*1000 && true === globalChronometer.isInRecovery() && false === globalChronometer.equipmentWarningEmited)
+    else if (remainingTime <= 15 * 1000 && true === globalChronometer.isInRecovery() && false === globalChronometer.equipmentWarningEmited)
     {
         playSound('#equipmentSound');
         globalChronometer.equipmentWarningEmited = true;
@@ -490,7 +523,7 @@ $(document).ready(function() {
             globalChronometer.reset();
             globalScoreAccumulator.reset();
             //if (globalConfiguration.autoswitchtab)
-                $('#tabJudLnk').tab('show');
+            $('#tabJudLnk').tab('show');
         }
         else if ($(this).data('etype') === 'vote')
         {
