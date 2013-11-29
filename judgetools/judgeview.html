@@ -186,16 +186,7 @@
 
                             </form>
 
-                        </div>
-                        <div class='well'>
-                            <form>
-                                <button class="btn btn-default btn-block">Connecter un serveur</button>
-                                <button class="btn btn-default btn-block">Réinitialiser les compteurs</button>
-                                <button class="btn btn-default btn-block">Choisir un assaut</button>
-                            </form>
-                        </div>
-
-
+                        </div
                     </div>
                     <div class='col-xs-5'>
                         <div class='well'>
@@ -266,7 +257,14 @@
                                         <input type="email" class="form-control" id="assaultRecoveryDuration" data-cparameter='assaultRecoveryDuration' placeholder="60'">
                                     </div>
                                 </div>
+                            </form>
 
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button class="btn btn-default chtri" data-etype='reset'>Réinitialiser les compteurs</button>
+                                    </div>
+                                </div>                            
                             </form>
 
                         </div>
@@ -289,6 +287,15 @@
                 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
                     <img alt="Licence Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
                 </a>
+                <audio preload='auto' id='endSound'>
+                    <source src="snd/boing.wav" type="audio/wav">
+                </audio>                
+                <audio preload='auto' id='readySound'>
+                    <source src="snd/boing.wav" type="audio/wav">
+                </audio>                
+                <audio preload='auto' id='equipmentSound'>
+                    <source src="snd/boing.wav" type="audio/wav">
+                </audio>                
             </div>
         </footer>
         <!-- Bootstrap core JavaScript

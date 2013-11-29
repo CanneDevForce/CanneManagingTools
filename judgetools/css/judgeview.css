@@ -56,7 +56,7 @@ button.evtri,button.chtri{width:100%;}
 #voteview #votevalue button.no:hover,#voteview #votevalue button.no:focus{background-color:#f00;color:#000;}
 #voteview #votevalue button.maybe:hover,#voteview #votevalue button.maybe:focus{background-color:#888;color:#000;}
 /** MARK PANE */
-#markview {}
+#markview {height:100%;}
 #markview button{height:100%;}
 #markview div{height:100%;}
 #markview form,#markview .score{height:20%;}

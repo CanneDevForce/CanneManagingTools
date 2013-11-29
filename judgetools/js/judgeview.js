@@ -134,6 +134,30 @@ function Chronometer()
     this.lastStart = false;
     this.startlist = new Array();
     this.stoplist = new Array();
+    this.roundlist = new Array();
+    this.endWarningEmited = false;
+    this.readyWarningEmited = false;
+    this.equipmentWarningEmited = false;
+
+    this.getRemainingTime = function()
+    {
+        // round
+        if (this.isInRecovery())
+        {
+            return globalConfiguration.assaultRecoveryDuration*1000 - this.gettime();
+        }
+        // recovery
+        {
+            return globalConfiguration.assaultRoundDuration*1000 - this.gettime();
+        }
+    };
+    this.isInRecovery = function()
+    {
+        if (this.roundlistlength % 2 === 0)
+            return true;
+        else
+            return false;
+    };
 
     this.localStore = function()
     {
@@ -205,6 +229,9 @@ function Chronometer()
     };
     this.reset = function()
     {
+        this.endWarningEmited = false;
+        this.readyWarningEmited = false;
+        this.equipmentWarningEmited = false;
         this.timecounter = 0;
         this.syncDisplay();
         displayTime();
@@ -332,6 +359,20 @@ function ScoreAccumulator()
     {
         return this.counters[color].touch - this.counters[color].remtouch;
     };
+    this.reset = function()
+    {
+        this.eventList = new Array();
+        this.counters = new Array();
+
+        this.counters = {
+            yellow: {touch: 0, remtouch: 0, warning: 0, penalty: 0, observation: 0, yellowcard: 0, redcard: 0},
+            blue: {touch: 0, remtouch: 0, warning: 0, penalty: 0, observation: 0, yellowcard: 0, redcard: 0}
+        };
+        displayTouches();
+        displayRefnote();
+        this.localStore();
+
+    }
     this.localLoad();
 }
 
@@ -343,6 +384,23 @@ function displayTime()
     var time = globalChronometer.gettime();
     $("#counters .commonzone .clock.visible-xs").text(Math.floor(time / 1000));
     $("#counters .commonzone .clock.hidden-xs").text(Math.floor(time / 60000) + ":" + Math.floor(time / 1000) % 60);
+    var remainingTime = globalChronometer.getRemainingTime();
+    if (remainingTime <= 0 && false === globalChronometer.endWarningEmited)
+    {
+        addLog(remainingTime);        
+        playSound('#endSound');
+        globalChronometer.endWarningEmited = true;
+    }
+    else if (remainingTime <= 5*1000 && true === globalChronometer.isInRecovery() && false === globalChronometer.readyWarningEmited)
+    {
+        playSound('#readySound');
+        globalChronometer.readyWarningEmited = true;
+    }
+    else if (remainingTime <= 15*1000 && true === globalChronometer.isInRecovery() && false === globalChronometer.equipmentWarningEmited)
+    {
+        playSound('#equipmentSound');
+        globalChronometer.equipmentWarningEmited = true;
+    }
 }
 function displayTouches()
 {
@@ -363,7 +421,8 @@ function displayConfig()
 {
     $('#settingsview input').each(function() {
         var val = $(this).data('cparameter');
-        $(this).val(globalConfiguration[val]);
+        if (false !== globalConfiguration[val])
+            $(this).val(globalConfiguration[val]);
     });
 }
 function addLog(text)
@@ -378,6 +437,10 @@ function sizeadjust()
     $(".fillheight").css("height", newHeight + "px");
     $('#clickers').css("height", newHeight - $("#counters").outerHeight(true) - $("#pagefooter").outerHeight(true) - 15 + "px");
 
+}
+function playSound(id)
+{
+    $(id)[0].play();
 }
 
 /***
@@ -425,8 +488,9 @@ $(document).ready(function() {
         else if ($(this).data('etype') === 'reset')
         {
             globalChronometer.reset();
-            if (globalConfiguration.autoswitchtab)
-                $('#tabVotLnk').tab('show');
+            globalScoreAccumulator.reset();
+            //if (globalConfiguration.autoswitchtab)
+                $('#tabJudLnk').tab('show');
         }
         else if ($(this).data('etype') === 'vote')
         {
@@ -443,10 +507,7 @@ $(document).ready(function() {
     displayTouches();
     displayRefnote();
     displayConfig();
-    // toremove
-
-}
-);
+});
 
 
 
