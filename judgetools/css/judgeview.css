@@ -1,0 +1,53 @@
+html{height:100%;}
+body{height:100%;background-color:#999;}
+button.evtri,button.chtri{width:100%;}
+.yellowzone button{background-color:#ffa;color:#000;}
+.bluezone button{background-color:#aaf;color:#000;}
+.yellowzone .score{background-color:#000;color:#ff0;}
+.bluezone .score{background-color:#000;color:#00f;}
+
+/** JUDGE PANE */
+
+/* JUDGE PANE > counters div */
+#counters{
+    height:50px;
+    font-size:40px;
+}
+#counters div{
+    text-align:center;
+}
+#counters .score{
+    font-weight:bold;
+}
+
+#counters .commonzone{
+    background-color:#bbb;
+}
+#counters .commonzone .clock{
+}
+#counters .commonzone .clock.visible-xs{
+}
+#counters .yellowzone{
+    background-color:#000;
+}
+#counters .bluezone{
+    background-color:#000;
+}
+
+/* JUDGE PANE > clickers div */
+#clickers {font-size:40px;}
+#clickers div{height:100%;}
+#clickers button{height:100%;}
+#clickers form{height:50%;}
+#clickers .yellowzone button[data-etype="touch"]{background-color:#ff5;}
+#clickers .bluezone button[data-etype="touch"]{background-color:#77f;}
+
+/** REF PANE */
+#refereeview {}
+#refereeview button{height:100%;}
+#refereeview div{height:100%;}
+#refereeview form,#refereeview .score{height:20%;}
+#refereeview .score{font-size:30px;text-align:center;vertical-align:middle;}
+/** SETTINGS PANE */
+/** LOGS  PANE */
+#logs{background:red;color:white;font-size:14px;}
