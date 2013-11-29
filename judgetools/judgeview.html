@@ -75,6 +75,7 @@
 
                         <form action='#'><button class='chtri' data-etype='start'><span class='hidden-xs'>Start</span><span class='visible-xs'>></span></button></form>
                         <form action='#'><button class='chtri' data-etype='stop'><span class='hidden-xs'>Stop</span><span class='visible-xs'>X</span></button></form>
+                        <form action='#'><button class='chtri' data-etype='vote'><span class='hidden-xs'>Vote</span><span class='visible-xs'>V</span></button></form>
                     </div><!-- /#commonzone -->	
                     <div class='col-xs-5 bluezone'>
                         <form action='#'><button class='evtri' data-fcolor='blue' data-etype='touch'>+</button></form>
@@ -161,12 +162,13 @@
                                 <div class="form-group">
                                     <label for="id" class="col-sm-3 control-label">Rôle</label>
                                     <div class="col-sm-9">
-                                        <select class="form-control" id="id" placeholder="Rôle">
-                                            <option>---</option>
-                                            <option>Arbitre</option>
-                                            <option>Juge 1</option>
-                                            <option>Juge 2</option>
-                                            <option>Juge 3</option>
+                                        <select class="form-control" id="confSelectRole">
+                                            <option  value='all'>Tous</option>
+                                            <option value='referee'>Arbitre</option>
+                                            <option value='judge1'>Juge 1</option>
+                                            <option value='judge2'>Juge 2</option>
+                                            <option value='judge3'>Juge 3</option>
+                                            <option value='chrono'>Chrono</option>
                                         </select>
                                     </div>
                                 </div>

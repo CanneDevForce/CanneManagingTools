@@ -40,6 +40,7 @@ button.evtri,button.chtri{width:100%;}
 #clickers div{height:100%;}
 #clickers button{height:100%;}
 #clickers form{height:50%;}
+#clickers .commonzone form{height:30%;}
 #clickers .yellowzone button[data-etype="touch"]{background-color:#ff5;}
 #clickers .bluezone button[data-etype="touch"]{background-color:#77f;}
 

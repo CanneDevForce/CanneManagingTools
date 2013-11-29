@@ -245,6 +245,70 @@ function sizeadjust()
 
 }
 
+/**
+ * DF: display adjustment by role or per moment
+ */
+function setRole(role)
+{
+    if('all'==role)
+    {
+        $('#tabJudLnk').show();
+        $('#tabVotLnk').show();
+        $('#tabMarLnk').show();
+        $('#tabConLnk').show();
+        $('#tabLogLnk').show();
+        
+    }
+    else if('judge1'==role)
+    {
+        $('#tabJudLnk').show();
+        $('#tabVotLnk').hide();
+        $('#tabMarLnk').show();
+        $('#tabConLnk').show();
+        $('#tabLogLnk').hide();
+    }
+    else if('judge2'==role)
+    {
+        $('#tabJudLnk').show();
+        $('#tabVotLnk').show();
+        $('#tabMarLnk').hide();
+        $('#tabConLnk').show();
+        $('#tabLogLnk').hide();
+        
+    }
+    else if('judge3'==role)
+    {
+        $('#tabJudLnk').show();
+        $('#tabVotLnk').show();
+        $('#tabMarLnk').hide();
+        $('#tabConLnk').show();
+        $('#tabLogLnk').hide();
+        
+    }
+    else if('referee'==role)
+    {
+        $('#tabJudLnk').hide();
+        $('#tabVotLnk').hide();
+        $('#tabMarLnk').show();
+        $('#tabConLnk').show();
+        $('#tabLogLnk').hide();
+        
+    }
+    else if('chrono'==role)
+    {
+        $('#tabJudLnk').hide();
+        $('#tabVotLnk').hide();
+        $('#tabMarLnk').show();
+        $('#tabConLnk').show();
+        $('#tabLogLnk').hide();
+        
+    }
+    else 
+    {
+        
+    }
+    
+}
 
 
 /***
@@ -256,6 +320,9 @@ $(document).ready(function() {
     globalScoreAccumulator = new ScoreAccumulator();
 
     // LISTENERS
+    $(window).resize(function() {
+        sizeadjust();
+    });
     $('button.evtri').click(function() {
         globalScoreAccumulator.addEvent($(this).data('fcolor'), $(this).data('etype'), $(this).data('details'));
         return false;
@@ -270,8 +337,9 @@ $(document).ready(function() {
         else
             alert($(this).data('etype'));
     });
-    $(window).resize(function() {
-        sizeadjust();
+    $('#confSelectRole').change(function() {
+        setRole($(this).val());
+        return false;
     });
 
     // VIEW SETUP
