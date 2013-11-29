@@ -44,7 +44,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#judgeview" data-toggle="tab" id='tabJudLnk'>Juge</a></li>
                         <li><a href="#voteview" data-toggle="tab" id='tabVotLnk'>Vote</a></li>
-                        <li><a href="#refereeview" data-toggle="tab" id='tabRefLnk'>Chrono</a></li>
+                        <li><a href="#markview" data-toggle="tab" id='tabMarLnk'>Marque</a></li>
                         <li><a href="#settings" data-toggle="tab" id='tabSetLnk'>Configuration</a></li>
                         <li><a href="#logs" data-toggle="tab" id='tabLogLnk'>logs</a></li>
                     </ul>
@@ -84,9 +84,29 @@
             </div><!-- /.container #judgeview -->
 
             <div class="container tab-pane fillheight" id='voteview'>
+                <div class='row' >
+                    <div class='col-xs-12'>
+                        <form action='#' id='votecolor'>
+                            <div class='btn-group'>
+                                <button class='btn btn-inactif yellow' >Jaune</button>
+                                <button class='btn btn-inactif blue' >Bleu</button>
+                            </div>
+                        </form>
+                    </div><!-- /#choixcouleur -->	
+                </div>
+                <div class='row' >
+                    <div class='col-xs-12'>
+                        <form action='#' id='votevalue'>
+                            <div class='btn-group-vertical'>
+                                <button class='btn btn-inactif yes'>Oui</button>
+                                <button class='btn btn-inactif no '>Non</button>
+                                <button class='btn btn-inactif maybe'>Pas vu</button>
+                            </div>
+                        </form>
+                    </div><!-- /#vote -->	
+                </div>
             </div><!-- /.container voteview -->
-
-            <div class="container tab-pane fillheight" id='refereeview'>
+            <div class="container tab-pane fillheight" id='markview'>
                 <div class='row' >
                     <div class='col-xs-4 yellowzone'>
                         <form action='#'><button class='evtri' data-fcolor='yellow' data-etype='observation'>Observation</button></form>
@@ -118,7 +138,7 @@
                     </div><!-- /#blue -->	
 
                 </div>
-            </div><!-- /.container #refereeview -->
+            </div><!-- /.container #markview -->
             <div class="container tab-pane" id='settings'>
                 <div class='row' >
                     <div class='col-xs-7'>

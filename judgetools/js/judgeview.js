@@ -60,7 +60,6 @@ function Chronometer()
             this.syncDisplay();
             addLog('chrono start');
             this.localStore();
-            switchRefView(false);
         }
 
     }
@@ -71,14 +70,11 @@ function Chronometer()
             this.stoplist.push(new Date());
             this.timecounter += (new Date().getTime() - this.lastStart);
             this.lastStart = false;
-
-            //pres
+            // to refresh regularily the time display
             this.syncDisplay();
-            $('#tabRefLnk').tab('show');
 
             //view
             displayTime();
-            switchRefView(true);
             addLog('chrono stop');
             this.localStore();
         }
@@ -181,12 +177,12 @@ function ScoreAccumulator()
                 return false;
             } else
             {
-                $('#tabJudLnk').tab('show');
+                
             }
         }
         if ('observation' == type)
         {
-            $('#tabJudLnk').tab('show');
+            
         }
 
         // structure
@@ -239,13 +235,6 @@ function addLog(text)
 {
     $('#logs ul').append('<li>' + globalChronometer.gettime() + ' -- ' + text + "</li>");
 }
-function switchRefView(val)
-{
-    if (val)
-        $('#refereeview button').removeAttr("disabled");
-    else
-        $('#refereeview button').attr("disabled", "enabled");
-}
 
 // pour que le bouton touche soit toujours de la plus grande taille possible.
 function sizeadjust()
@@ -291,7 +280,6 @@ $(document).ready(function() {
     displayTouches();
     displayRefnote();
     // toremove
-    //$('#tabSetLnk').tab('show');
 
 });
 
