@@ -13,7 +13,7 @@ button.evtri,button.chtri{width:100%;}
 /* JUDGE PANE > counters div */
 #counters{
     height:50px;
-    font-size:40px;
+    font-size: 3em;
 }
 #counters div{
     text-align:center;
@@ -38,7 +38,7 @@ button.evtri,button.chtri{width:100%;}
 
 
 /* JUDGE PANE > clickers div */
-#clickers {font-size:40px;}
+#clickers {font-size: 3em;}
 #clickers div{height:100%;}
 #clickers button{height:100%;}
 #clickers form{height:50%;}
@@ -47,6 +47,7 @@ button.evtri,button.chtri{width:100%;}
 #clickers .bluezone button[data-etype="touch"]{background-color:#77f;}
 
 /** VOTE PANE */
+#voteview {font-size: 3em;font-weight: bold;}
 #voteview #votecolor{height:25%;}
 #voteview #votevalue{height:75%;}
 #voteview div {height:100%}
@@ -54,13 +55,6 @@ button.evtri,button.chtri{width:100%;}
 #voteview .btn-group-vertical {width:80%;margin:0 10%;}
 #voteview #votecolor button {height:100%;width:50%;}
 #voteview #votevalue button {height:32%;width:100%;}
-
-#voteview button {background-color:#222;color:#fff;font-weight: bold;}
-#voteview #votecolor button.yellow{color:#ff5;}
-#voteview #votecolor button.blue{color:#77f;}
-#voteview #votevalue button.yes{color:#0f0;}
-#voteview #votevalue button.no{color:#f00;}
-#voteview #votevalue button.maybe{color:#888;}
 
 #voteview #votecolor button.yellow:hover,#voteview #votecolor button.yellow:focus{background-color:#ff5;color:#000;}
 #voteview #votecolor button.blue:hover,#voteview #votecolor button.blue:focus{background-color:#77f;color:#000;}
