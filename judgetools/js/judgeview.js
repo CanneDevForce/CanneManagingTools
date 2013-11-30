@@ -510,8 +510,8 @@ function networkSendUnsentScoreEvents()
         var full_call = api_url + "?" + $.param(tosendEvent);
 
         $.post(full_call, function(data) {
-            alert("Load was performed.");
             totest[i].sent = true;
+            addLog('Server called for scoreevent '+i+' : ok');
         });
         //@todo
         totest[i].sent = true;
