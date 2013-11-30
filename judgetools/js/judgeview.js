@@ -538,6 +538,7 @@ $(document).ready(function() {
         }
         else if ($(this).data('etype') === 'vote')
         {
+            globalChronometer.stop();
             $('#tabVotLnk').tab('show');
         }
         else
