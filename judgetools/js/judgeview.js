@@ -46,7 +46,7 @@ function Configuration()
         storeddatas = JSON.parse(storeddatas);
         for (var i in storeddatas)
         {
-            this[i] = storeddatas[i];
+            this.setValue(i,storeddatas[i]) ;
         }
     };
 
@@ -281,7 +281,7 @@ function Chronometer()
         this.readyWarningEmited = false;
         this.equipmentWarningEmited = false;
 
-        $("#clickers .commonzone button").removeClass( "btn-info btn-warning btn-danger btn-default" ).addClass('btn-default');
+        $("#clickers .commonzone button").removeClass("btn-info btn-warning btn-danger btn-default").addClass('btn-default');
         this.start();
         displayTime();
         addLog('nextStage (' + this.roundlist.length + ')');
@@ -430,19 +430,19 @@ function displayTime()
     {
         addLog(remainingTime);
         playSound('#endSound');
-        $("#clickers .commonzone button").removeClass( "btn-info btn-warning btn-danger btn-default" ).addClass('btn-danger');
+        $("#clickers .commonzone button").removeClass("btn-info btn-warning btn-danger btn-default").addClass('btn-danger');
         globalChronometer.endWarningEmited = true;
     }
     else if (remainingTime <= 5 * 1000 && true === globalChronometer.isInRecovery() && false === globalChronometer.readyWarningEmited)
     {
         playSound('#readySound');
-        $("#clickers .commonzone button").removeClass( "btn-info btn-warning btn-danger btn-default" ).addClass('btn-warning');
+        $("#clickers .commonzone button").removeClass("btn-info btn-warning btn-danger btn-default").addClass('btn-warning');
         globalChronometer.readyWarningEmited = true;
     }
     else if (remainingTime <= 15 * 1000 && true === globalChronometer.isInRecovery() && false === globalChronometer.equipmentWarningEmited)
     {
         playSound('#equipmentSound');
-        $("#clickers .commonzone button").removeClass( "btn-info btn-warning btn-danger btn-default" ).addClass('btn-info');
+        $("#clickers .commonzone button").removeClass("btn-info btn-warning btn-danger btn-default").addClass('btn-info');
         globalChronometer.equipmentWarningEmited = true;
     }
 }
@@ -464,6 +464,11 @@ function displayRefnote()
 function displayConfig()
 {
     $('#settingsview input').each(function() {
+        var val = $(this).data('cparameter');
+        if (false !== globalConfiguration[val])
+            $(this).val(globalConfiguration[val]);
+    });
+    $('#settingsview select').each(function() {
         var val = $(this).data('cparameter');
         if (false !== globalConfiguration[val])
             $(this).val(globalConfiguration[val]);
@@ -501,6 +506,12 @@ $(document).ready(function() {
         sizeadjust();
     });
     $('#settingsview input').keyup(function() {
+        globalConfiguration.setValue($(this).data('cparameter'), $(this).val());
+        //addLog(print_r(globalConfiguration));
+        //addLog((localStorage.getItem('mainConfiguration')));
+        return false;
+    });
+    $('#settingsview select').change(function() {
         globalConfiguration.setValue($(this).data('cparameter'), $(this).val());
         //addLog(print_r(globalConfiguration));
         //addLog((localStorage.getItem('mainConfiguration')));
