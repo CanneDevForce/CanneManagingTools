@@ -273,6 +273,11 @@ function Chronometer()
     {
         this.stop();
         this.roundlist.push(this.timecounter);
+        // si pas de recup (équipes) alors on crée une fausse récup.
+        if(this.isInRecovery() &&  globalConfiguration.assaultRecoveryDuration==='0')
+        {
+            this.roundlist.push(0);
+        }
 
         this.timecounter = 0;
         this.lastStart = false;
