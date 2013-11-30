@@ -46,7 +46,7 @@ function Configuration()
         storeddatas = JSON.parse(storeddatas);
         for (var i in storeddatas)
         {
-            this.setValue(i,storeddatas[i]) ;
+            this.setValue(i, storeddatas[i]);
         }
     };
 
@@ -244,7 +244,6 @@ function Chronometer()
         else
         {
             this.interv = setInterval(function() {
-                //@todo gérer le dépassement
                 displayTime();
             }, 500);
             $('#clickers .chtri[data-etype="start"]').parent('form').hide();
@@ -463,12 +462,7 @@ function displayRefnote()
 }
 function displayConfig()
 {
-    $('#settingsview input').each(function() {
-        var val = $(this).data('cparameter');
-        if (false !== globalConfiguration[val])
-            $(this).val(globalConfiguration[val]);
-    });
-    $('#settingsview select').each(function() {
+    $('#settingsview input, #settingsview select').each(function() {
         var val = $(this).data('cparameter');
         if (false !== globalConfiguration[val])
             $(this).val(globalConfiguration[val]);
@@ -554,6 +548,26 @@ $(document).ready(function() {
         }
         else
             alert($(this).data('etype'));
+    });
+    $('#voteview button').click(function() {
+        $(this).parent('div').children().removeClass('active');
+        $(this).addClass('active');
+        if ($('#voteview .active').length === 2)
+        {
+            var color = $('#votecolor .active').data('fcolor');
+            var vote = $('#votevalue .active').data('etype');
+            var ok = window.confirm("Confirmez vous votre vote:" + color + ":" + vote + " ?");
+            if (ok)
+            {
+                globalScoreAccumulator.addEvent(color, vote, false);
+                $('#voteview button').removeClass('active');
+                if (globalConfiguration.userRole === 'judge1')
+                    $('#tabMarLnk').tab('show');
+                else
+                    $('#tabJudLnk').tab('show');
+            }
+        }
+        return false;
     });
 
 

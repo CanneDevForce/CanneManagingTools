@@ -56,11 +56,11 @@ button.evtri,button.chtri{width:100%;}
 #voteview #votecolor button {height:100%;width:50%;}
 #voteview #votevalue button {height:32%;width:100%;}
 
-#voteview #votecolor button.yellow:hover,#voteview #votecolor button.yellow:focus{background-color:#ff5;color:#000;}
-#voteview #votecolor button.blue:hover,#voteview #votecolor button.blue:focus{background-color:#77f;color:#000;}
-#voteview #votevalue button.yes:hover,#voteview #votevalue button.yes:focus{background-color:#0f0;color:#000;}
-#voteview #votevalue button.no:hover,#voteview #votevalue button.no:focus{background-color:#f00;color:#000;}
-#voteview #votevalue button.maybe:hover,#voteview #votevalue button.maybe:focus{background-color:#888;color:#000;}
+#voteview #votecolor button.yellow:hover,#voteview #votecolor button.yellow.active{background-color:#ff5;color:#000;}
+#voteview #votecolor button.blue:hover,#voteview #votecolor button.blue.active{background-color:#77f;color:#000;}
+#voteview #votevalue button.yes:hover,#voteview #votevalue button.yes.active{background-color:#0f0;color:#000;}
+#voteview #votevalue button.no:hover,#voteview #votevalue button.no.active{background-color:#f00;color:#000;}
+#voteview #votevalue button.maybe:hover,#voteview #votevalue button.maybe.active{background-color:#888;color:#000;}
 /** MARK PANE */
 #markview button{height:100%;}
 #markview div{height:100%;}

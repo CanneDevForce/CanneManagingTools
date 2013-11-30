@@ -90,17 +90,17 @@
                 <div class='row' id='votecolor'>
                     <div class='col-xs-12'>
                         <div class='btn-group' >
-                            <button class='btn btn-default yellow' >Jaune</button>
-                            <button class='btn btn-default blue' >Bleu</button>
+                            <button class='btn btn-default yellow' data-fcolor='yellow' >Jaune</button>
+                            <button class='btn btn-default blue' data-fcolor='blue'>Bleu</button>
                         </div>
                     </div><!-- /#choixcouleur -->	
                 </div>
                 <div class='row' id='votevalue'>
                     <div class='col-xs-12'>
                         <div class='btn-group-vertical' >
-                            <button class='btn btn-default yes'>Oui</button>
-                            <button class='btn btn-default no '>Non</button>
-                            <button class='btn btn-default maybe'>Pas vu</button>
+                            <button class='btn btn-default yes' data-etype='voteYes'>Oui</button>
+                            <button class='btn btn-default no ' data-etype='voteNo'>Non</button>
+                            <button class='btn btn-default maybe' data-etype='voteMaybe'>Pas vu</button>
                         </div>
 
                     </div><!-- /#vote -->	
@@ -281,9 +281,6 @@
 
         <footer id="pagefooter">
             <div class="hidden-xs">
-                <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-                    <img alt="Licence Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
-                </a>
                 <audio preload='auto' id='endSound'>
                     <source src="snd/boing.wav" type="audio/wav">
                 </audio>                
