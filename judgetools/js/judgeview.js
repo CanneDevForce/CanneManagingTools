@@ -274,7 +274,7 @@ function Chronometer()
         this.stop();
         this.roundlist.push(this.timecounter);
         // si pas de recup (équipes) alors on crée une fausse récup.
-        if(this.isInRecovery() &&  globalConfiguration.assaultRecoveryDuration==='0')
+        if (this.isInRecovery() && globalConfiguration.assaultRecoveryDuration === '0')
         {
             this.roundlist.push(0);
         }
@@ -311,7 +311,7 @@ function ScoreEvent(color, type, details)
     this.color = color;
     this.type = type;
     this.details = details;
-    this.sent = 0;
+    this.sent = false;
     this.date = new Date();
     this.assaulttime = globalChronometer.gettime();
 }
@@ -392,8 +392,6 @@ function ScoreAccumulator()
         if (undefined === this.counters[color][type])
             this.counters[color][type] = 0;
         this.counters[color][type]++;
-        //@todo: gérer l'accès réseau pour transmettre les informations.
-
         //view
         displayTouches();
         displayRefnote();
@@ -492,6 +490,40 @@ function playSound(id)
 }
 
 /***
+ * NETWORKING
+ ***/
+function networkSendUnsentScoreEvents()
+{
+    var totest = globalScoreAccumulator.eventList;
+    for (i = 0; i < totest.length; i++)
+    {
+        if (totest[i].sent === true)
+            continue;
+        //@todo: brancher sur une vraie api
+        var tosendEvent = totest[i];
+        tosendEvent.username = globalConfiguration.userName;
+        tosendEvent.userrole = globalConfiguration.userRole;
+        tosendEvent.yellow = globalScoreAccumulator.gettouches('yellow');
+        tosendEvent.blue = globalScoreAccumulator.gettouches('blue');
+
+        var api_url = 'http://www.canne-et-dragons.org/eflags.php';
+        var full_call = api_url + "?" + $.param(tosendEvent);
+
+        $.post(full_call, function(data) {
+            alert("Load was performed.");
+            totest[i].sent = true;
+        });
+        //@todo
+        totest[i].sent = true;
+    }
+}
+function networkGetVoteResult()
+{
+    //@Todo!!!
+}
+
+
+/***
  * INITIALISATION
  ***/
 $(document).ready(function() {
@@ -582,6 +614,12 @@ $(document).ready(function() {
     displayTouches();
     displayRefnote();
     displayConfig();
+
+
+    var interv = setInterval(function() {
+        networkSendUnsentScoreEvents();
+    }, 1000);
+
 });
 
 
