@@ -1,6 +1,7 @@
 /***
  * DATAS STRUCTURES
  ***/
+//localStorage.clear();
 /**
  *  DS: CONFIGURATION
  **/
@@ -8,8 +9,8 @@ function Configuration()
 {
     this.userName = false;
     this.userAccesscode = false;
-    this.userRole = 'all';
-    this.autoSwitchtab = true;
+    this.userRole = 'judge1';
+    this.autoSwitchtab = false;
     this.conServer = false;
     this.conGathering = false;
     this.conCompetition = false;
@@ -17,9 +18,9 @@ function Configuration()
     this.conAssault = false;
     this.assaultYellowName = false;
     this.assaultBlueName = false;
-    this.assaultRoundNumber = false;
-    this.assaultRoundDuration = false;
-    this.assaultRecoveryDuration = false;
+    this.assaultRoundNumber = 3;
+    this.assaultRoundDuration = 90;
+    this.assaultRecoveryDuration = 60;
 
     this.localStore = function()
     {
@@ -313,6 +314,7 @@ function ScoreEvent(color, type, details)
     this.details = details;
     this.sent = false;
     this.date = new Date();
+    //@todo manage round number
     this.assaulttime = globalChronometer.gettime();
 }
 
@@ -513,13 +515,13 @@ function networkSendUnsentScoreEvents()
             addLog('Server called for scoreevent '+i+' : ok'+full_call);
             totest[i].sent = true;
         });
-        //@todo
+        //@todo remove
         totest[i].sent = true;
     }
 }
 function networkGetVoteResult()
 {
-    //@Todo!!!
+    //@todo warning synchonization management
 }
 
 

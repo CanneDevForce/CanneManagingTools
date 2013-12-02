@@ -175,9 +175,9 @@
                         <div class='well'>
                             <form class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="autoSwitchtab" class="col-sm-9 control-label">Bascule automatique après validation</label>
-                                    <div class="col-sm-3">
-                                        <input type="email" class="form-control" id="autoSwitchtab" data-cparameter='autoSwitchtab' placeholder="ll">
+                                    <label for="autoSwitchtab" class="col-sm-6 control-label">Bascule automatique après validation</label>
+                                    <div class="col-sm-6">
+                                        Off<input type="range" id="autoSwitchtab" data-cparameter='autoSwitchtab' min="0" max="1">On
                                     </div>
                                 </div>
 
@@ -191,67 +191,67 @@
                                 <div class="form-group">
                                     <label for="conServer" class="col-sm-4 control-label">Serveur</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="conServer" data-cparameter='conServer' placeholder="canneMT.fis.org">
+                                        <input type="url" class="form-control" id="conServer" data-cparameter='conServer' placeholder="canneMT.fis.org">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="conGathering" class="col-sm-4 control-label">Evenement</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="conGathering" data-cparameter='conGathering' placeholder="world championship">
+                                        <input type="text" class="form-control" id="conGathering" data-cparameter='conGathering' placeholder="world championship">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="conCompetition" class="col-sm-4 control-label">Compétition</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="conCompetition" data-cparameter='conCompetition' placeholder="world championship">
+                                        <input type="text" class="form-control" id="conCompetition" data-cparameter='conCompetition' placeholder="world championship">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="conGroup" class="col-sm-4 control-label">Groupe</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="conGroup" data-cparameter='conGroup' placeholder="pool A1">
+                                        <input type="text" class="form-control" id="conGroup" data-cparameter='conGroup' placeholder="pool A1">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="conAssault" class="col-sm-4 control-label">Assaut</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="conAssault" data-cparameter='conAssault' placeholder="A1-22">
+                                        <input type="text" class="form-control" id="conAssault" data-cparameter='conAssault' placeholder="A1-22">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="assaultYellowName" class="col-sm-4 control-label">Tireur Jaune</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="assaultYellowName" data-cparameter='assaultYellowName' placeholder="Madame Jaune">
+                                        <input type="text" class="form-control" id="assaultYellowName" data-cparameter='assaultYellowName' placeholder="Madame Jaune">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="assaultBlueName" class="col-sm-4 control-label">Tireur Bleu</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="assaultBlueName" data-cparameter='assaultBlueName' placeholder="Monsieur Bleu">
+                                        <input type="text" class="form-control" id="assaultBlueName" data-cparameter='assaultBlueName' placeholder="Monsieur Bleu">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="assaultRoundNumber" class="col-sm-4 control-label">nombre de reprises</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="assaultRoundNumber" data-cparameter='assaultRoundNumber' placeholder="3">
+                                        <input type="number" class="form-control" id="assaultRoundNumber" data-cparameter='assaultRoundNumber' min="1" max="10">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="assaultRoundDuration" class="col-sm-4 control-label">durée d'une reprise (secondes)</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="assaultRoundDuration" data-cparameter='assaultRoundDuration' placeholder="90 (en secondes)">
+                                        <input type="number" class="form-control" id="assaultRoundDuration" data-cparameter='assaultRoundDuration' step="10">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="assaultRecoveryDuration" class="col-sm-4 control-label">temps de récupération (secondes)</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="assaultRecoveryDuration" data-cparameter='assaultRecoveryDuration' placeholder="60 (en secondes)'">
+                                        <input type="number" class="form-control" id="assaultRecoveryDuration" data-cparameter='assaultRecoveryDuration' step="10">
                                     </div>
                                 </div>
                             </form>
