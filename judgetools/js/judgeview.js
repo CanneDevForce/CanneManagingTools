@@ -421,6 +421,93 @@ function ScoreAccumulator()
     this.localLoad();
 }
 
+fakeGatheringStructure = {
+    gathers: [
+        {
+            id: 1,
+            name: 'gather1',
+            competitions: [
+                {
+                    id: 1,
+                    name: 'compet1',
+                    groupes: [
+                        {
+                            id: 1,
+                            name: 'poule 1',
+                            assaults: [
+                                {
+                                    id: 1,
+                                    name: 'g1c1g1a1',
+                                    fighters: [
+                                        {
+                                            id: 1,
+                                            name: 'Tomtom'
+                                        },
+                                        {
+                                            id: 2,
+                                            name: 'Nana'
+                                        }
+                                    ]
+                                },
+                                {
+                                    id: 2,
+                                    name: 'g1c1g1a2',
+                                    fighters: [
+                                        {
+                                            id: 3,
+                                            name: 'Romeo'
+                                        },
+                                        {
+                                            id: 4,
+                                            name: 'Giulietta'
+                                        }
+                                    ]
+                                }
+                            ]
+
+                        },
+                        {
+                            id: 2,
+                            name: 'poule 2',
+                            assaults: [
+                                {
+                                    id: 3,
+                                    name: 'g1c1g2a1',
+                                    fighters: [
+                                        {
+                                            id: 5,
+                                            name: 'Starsky'
+                                        },
+                                        {
+                                            id: 6,
+                                            name: 'Hutch'
+                                        }
+                                    ]
+                                },
+                                {
+                                    id: 4,
+                                    name: 'g1c1g2a2',
+                                    fighters: [
+                                        {
+                                            id: 7,
+                                            name: 'Iseult'
+                                        },
+                                        {
+                                            id: 8,
+                                            name: 'Tristan'
+                                        }
+                                    ]
+                                }
+                            ]
+
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+};
+
 /***
  * DISPLAY FUNCTIONS
  ***/
