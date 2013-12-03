@@ -68,7 +68,7 @@ function Configuration()
                 $('#tabConLnk').show();
                 $('#tabLogLnk').show();
                 $('#counters .commonzone div').show();
-                $('#clickers .commonzone button').parent('form').show();
+                $('#clickers .commonzone button').show();
                 globalChronometer.syncDisplay();
             }
             else if ('judge1' === value)
@@ -80,7 +80,7 @@ function Configuration()
                 $('#tabLogLnk').hide();
 
                 $('#counters .commonzone div').show();
-                $('#clickers .commonzone button').parent('form').show();
+                $('#clickers .commonzone button').show();
                 globalChronometer.syncDisplay();
             }
             else if ('judge2' === value || 'judge3' === value)
@@ -93,8 +93,8 @@ function Configuration()
                 $('#tabLogLnk').hide();
 
                 $('#counters .commonzone div').hide();
-                $('#clickers .commonzone button').parent('form').hide();
-                $('#clickers .commonzone button[data-etype="vote"]').parent('form').show();
+                $('#clickers .commonzone button').hide();
+                $('#clickers .commonzone button[data-etype="vote"]').show();
             }
             else
             {
@@ -240,16 +240,16 @@ function Chronometer()
         if (this.lastStart === false)
         {
             clearInterval(this.interv);
-            $('#clickers .chtri[data-etype="start"]').parent('form').show();
-            $('#clickers .chtri[data-etype="stop"]').parent('form').hide();
+            $('#clickers .chtri[data-etype="start"]').show();
+            $('#clickers .chtri[data-etype="stop"]').hide();
         }
         else
         {
             this.interv = setInterval(function() {
                 displayTime();
             }, 500);
-            $('#clickers .chtri[data-etype="start"]').parent('form').hide();
-            $('#clickers .chtri[data-etype="stop"]').parent('form').show();
+            $('#clickers .chtri[data-etype="start"]').hide();
+            $('#clickers .chtri[data-etype="stop"]').show();
         }
     };
     this.isInRecovery = function()
@@ -730,6 +730,7 @@ $(document).ready(function() {
         }
     });
     $('button.evtri').click(function() {
+        //@todo: ask for details part   
         globalScoreAccumulator.addEvent($(this).data('fcolor'), $(this).data('etype'), $(this).data('details'));
     });
     $('button.chtri').click(function() {
@@ -767,6 +768,7 @@ $(document).ready(function() {
             alert($(this).data('etype'));
     });
     $('#voteview button').click(function() {
+        //@todo: ask for details part
         $(this).parent('div').children().removeClass('active');
         $(this).addClass('active');
         if ($('#voteview .active').length === 2)
