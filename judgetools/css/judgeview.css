@@ -69,3 +69,6 @@ button.evtri,button.chtri{width:100%;}
 /** SETTINGS PANE */
 /** LOGS  PANE */
 #logs{background:red;color:white;font-size:14px;}
+/** DETAILS PANE */
+#detailsview .row,#detailsview .btn-group-vertical{height:100%;}
+#detailsview button{height:17%;}

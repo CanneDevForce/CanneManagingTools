@@ -622,6 +622,11 @@ function displayGatheringInfo()
 
 }// END displayGatheringInfo
 
+function displayModalQuestion(options,callback)
+{
+    
+}
+
 function addLog(text)
 {
     $('#logs ul').append('<li>' + globalChronometer.gettime() + ' -- ' + text + "</li>");
