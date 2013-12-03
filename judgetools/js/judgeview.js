@@ -10,7 +10,7 @@ function Configuration()
     this.userName = false;
     this.userAccesscode = false;
     this.userRole = 'judge1';
-    this.autoSwitchtab = false;
+    this.autoSwitchtab = true;
     this.autoAskDetails = false;
     this.conServer = false;
     this.conGathering = false;
@@ -85,7 +85,8 @@ function Configuration()
             }
             else if ('judge2' === value || 'judge3' === value)
             {
-                $('#tabJudLnk').tab('show');
+                if (globalConfiguration.autoSwitchtab==='1')
+                    $('#tabJudLnk').tab('show');
                 $('#tabJudLnk').show();
                 $('#tabVotLnk').show();
                 $('#tabMarLnk').hide();
@@ -123,6 +124,7 @@ function Configuration()
         }
 
     };
+    this.is
     this.localLoad();
 }
 
@@ -195,6 +197,7 @@ function Chronometer()
     };
     this.stop = function()
     {
+        var endStage=false;
         if (this.lastStart !== false)
         {
             this.stoplist.push(new Date());
@@ -212,12 +215,12 @@ function Chronometer()
                 var question = 'Ce stop termine-t-il la reprise?';
                 if (this.isInRecovery())
                     question = 'Ce stop termine-t-il le temps de récupération?';
-                var ok = window.confirm(question);
-                if (ok)
+                endStage = window.confirm(question);
+                if (endStage)
                     this.endOfStage();
             }//ENDOF stage end test
         }
-
+        return endStage;
     };
     this.reset = function()
     {
@@ -376,14 +379,6 @@ function ScoreAccumulator()
                 addLog('Annulé: ' + color + ' : ' + type + '');
                 return false;
             }
-            else
-            {
-
-            }
-        }
-        if ('observation' === type)
-        {
-
         }
 
         // structure
@@ -400,6 +395,7 @@ function ScoreAccumulator()
         displayRefnote();
         addLog('' + color + ' : ' + type + '');
         this.localStore();
+        return true;
     };
     this.gettouches = function(color)
     {
@@ -583,11 +579,11 @@ function displayGatheringInfo()
     $('#conAssault').empty();
     $('#assaultYellowName').val('');
     $('#assaultBlueName').val('');
-    
-    $('#conGathering').append($('<option>', {value: -1,text: 'Rien'}));
-    $('#conCompetition').append($('<option>', {value: -1,text: 'Rien'}));
-    $('#conGroup').append($('<option>', {value: -1,text: 'Rien'}));
-    $('#conAssault').append($('<option>', {value: -1,text: 'Rien'}));
+
+    $('#conGathering').append($('<option>', {value: -1, text: 'Rien'}));
+    $('#conCompetition').append($('<option>', {value: -1, text: 'Rien'}));
+    $('#conGroup').append($('<option>', {value: -1, text: 'Rien'}));
+    $('#conAssault').append($('<option>', {value: -1, text: 'Rien'}));
     $('#conGathering').val(-1);
     $('#conCompetition').val(-1);
     $('#conGroup').val(-1);
@@ -604,9 +600,9 @@ function displayGatheringInfo()
             value: currentgather.id,
             text: currentgather.name
         }));
-        if ( 1*currentgather.id !== 1*selectedGather )
+        if (1 * currentgather.id !== 1 * selectedGather)
             continue;
-        $('#conGathering').val(1*selectedGather);
+        $('#conGathering').val(1 * selectedGather);
         for (var c = 0; c < currentgather.competitions.length; c++)
         {
             var currentcompet = currentgather.competitions[c];
@@ -614,9 +610,9 @@ function displayGatheringInfo()
                 value: currentcompet.id,
                 text: currentcompet.name
             }));
-            if (1*currentcompet.id !== 1*selectedCompet)
+            if (1 * currentcompet.id !== 1 * selectedCompet)
                 continue;
-            $('#conCompetition').val(1*selectedCompet);
+            $('#conCompetition').val(1 * selectedCompet);
             for (var gr = 0; gr < currentcompet.groups.length; gr++)
             {
                 var currentgroup = currentcompet.groups[gr];
@@ -624,9 +620,9 @@ function displayGatheringInfo()
                     value: currentgroup.id,
                     text: currentgroup.name
                 }));
-                if (1*currentgroup.id !== 1*selectedGroup)
+                if (1 * currentgroup.id !== 1 * selectedGroup)
                     continue;
-                $('#conGroup').val(1*selectedGroup);
+                $('#conGroup').val(1 * selectedGroup);
                 for (var a = 0; a < currentgroup.assaults.length; a++)
                 {
                     var currentassault = currentgroup.assaults[a];
@@ -634,9 +630,9 @@ function displayGatheringInfo()
                         value: currentassault.id,
                         text: currentassault.name
                     }));
-                    if (1*currentassault.id !== 1*selectedAssault)
+                    if (1 * currentassault.id !== 1 * selectedAssault)
                         continue;
-                    $('#conAssault').val(1*selectedAssault);
+                    $('#conAssault').val(1 * selectedAssault);
                     $('#assaultYellowName').val(currentassault.fighters[0].name);
                     $('#assaultBlueName').val(currentassault.fighters[1].name);
                 }
@@ -679,6 +675,7 @@ function networkSendUnsentScoreEvents()
         var tosendEvent = totest[i];
         tosendEvent.username = globalConfiguration.userName;
         tosendEvent.userrole = globalConfiguration.userRole;
+        tosendEvent.assault = globalConfiguration.conAssault;
         tosendEvent.yellow = globalScoreAccumulator.gettouches('yellow');
         tosendEvent.blue = globalScoreAccumulator.gettouches('blue');
 
@@ -713,10 +710,11 @@ $(document).ready(function() {
     });
     $('#settingsview input').keyup(function() {
         globalConfiguration.setValue($(this).data('cparameter'), $(this).val());
-        //addLog(print_r(globalConfiguration));
-        //addLog((localStorage.getItem('mainConfiguration')));
     });
-    $('#settingsview select').change(function() {
+    $('#settingsview input').click(function() {
+        globalConfiguration.setValue($(this).data('cparameter'), $(this).val());
+    });
+    $('#settingsview select,#settingsview input').change(function() {
         var cpar = $(this).data('cparameter');
         globalConfiguration.setValue(cpar, $(this).val());
 
@@ -731,33 +729,32 @@ $(document).ready(function() {
     });
     $('button.evtri').click(function() {
         //@todo: ask for details part   
-        globalScoreAccumulator.addEvent($(this).data('fcolor'), $(this).data('etype'), $(this).data('details'));
+        var added=globalScoreAccumulator.addEvent($(this).data('fcolor'), $(this).data('etype'), $(this).data('details'));
+        if(added && globalConfiguration.autoSwitchtab==='1')
+            $('#tabJudLnk').tab('show');            
     });
     $('button.chtri').click(function() {
         if ($(this).data('etype') === 'start')
         {
             globalChronometer.start();
-            if (globalConfiguration.autoswitchtab)
+            if (globalConfiguration.autoSwitchtab==='1')
                 $('#tabJudLnk').tab('show');
 
         }
         else if ($(this).data('etype') === 'stop')
         {
-            globalChronometer.stop();
-            if (globalConfiguration.autoswitchtab)
+            var endStage = globalChronometer.stop();
+            if (!endStage && !globalChronometer.isInRecovery() && globalConfiguration.autoSwitchtab==='1')
             {
-                if ('judge1' === globalConfiguration.role)
-                    $('#tabMarLnk').tab('show');
-                else
-                    $('#tabVotLnk').tab('show');
+                $('#tabMarLnk').tab('show');
             }
         }
         else if ($(this).data('etype') === 'reset')
         {
             globalChronometer.reset();
             globalScoreAccumulator.reset();
-            //if (globalConfiguration.autoswitchtab)
-            $('#tabJudLnk').tab('show');
+            if (globalConfiguration.autoSwitchtab==='1')
+                $('#tabJudLnk').tab('show');
         }
         else if ($(this).data('etype') === 'vote')
         {
@@ -780,8 +777,12 @@ $(document).ready(function() {
             {
                 globalScoreAccumulator.addEvent(color, vote, false);
                 $('#voteview button').removeClass('active');
-                if (globalConfiguration.userRole === 'judge1')
+                if (vote==='voteYes' &&globalConfiguration.userRole === 'judge1')
+                {
                     $('#tabMarLnk').tab('show');
+                    var target='#markview [data-fcolor='+color+'][data-etype=warning]';
+                    $(target).click();
+                }
                 else
                     $('#tabJudLnk').tab('show');
             }
@@ -810,20 +811,20 @@ $(document).ready(function() {
 /****
  * TOREMOVE
  ***/
- function print_r(theObj) {
- var win_print_r = "";
- for (var p in theObj) {
- var _type = typeof(theObj[p]);
- if ((_type.indexOf("array") >= 0) || (_type.indexOf("object") >= 0)) {
- win_print_r += "<li>";
- win_print_r += "[" + _type + "] =>" + p;
- win_print_r += "<ul>";
- win_print_r += print_r(theObj[p]);
- win_print_r += "</ul></li>";
- } else {
- win_print_r += "<li>[" + p + "] =>" + theObj[p] + "</li>";
- }
- }
- return win_print_r;
- }
- /**/
+function print_r(theObj) {
+    var win_print_r = "";
+    for (var p in theObj) {
+        var _type = typeof(theObj[p]);
+        if ((_type.indexOf("array") >= 0) || (_type.indexOf("object") >= 0)) {
+            win_print_r += "<li>";
+            win_print_r += "[" + _type + "] =>" + p;
+            win_print_r += "<ul>";
+            win_print_r += print_r(theObj[p]);
+            win_print_r += "</ul></li>";
+        } else {
+            win_print_r += "<li>[" + p + "] =>" + theObj[p] + "</li>";
+        }
+    }
+    return win_print_r;
+}
+/**/
