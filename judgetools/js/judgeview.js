@@ -11,6 +11,7 @@ function Configuration()
     this.userAccesscode = false;
     this.userRole = 'judge1';
     this.autoSwitchtab = false;
+    this.autoAskDetails = false;
     this.conServer = false;
     this.conGathering = false;
     this.conCompetition = false;
@@ -430,7 +431,7 @@ fakeGatheringStructure = {
                 {
                     id: 1,
                     name: 'compet1',
-                    groupes: [
+                    groups: [
                         {
                             id: 1,
                             name: 'poule 1',
@@ -560,6 +561,92 @@ function displayConfig()
             $(this).val(globalConfiguration[val]);
     });
 }
+
+/**
+ * Update selected information from the gathering's tree information.
+ * @todo: must be connecter to true API
+ * @returns {undefined}
+ */
+function displayGatheringInfo()
+{
+    //@todo: may probably be refactored with recursive algo
+    //get selection
+    var selectedGather = globalConfiguration.conGathering;
+    var selectedCompet = globalConfiguration.conCompetition;
+    var selectedGroup = globalConfiguration.conGroup;
+    var selectedAssault = globalConfiguration.conAssault;
+
+    //reset
+    $('#conGathering').empty();
+    $('#conCompetition').empty();
+    $('#conGroup').empty();
+    $('#conAssault').empty();
+    $('#assaultYellowName').val('');
+    $('#assaultBlueName').val('');
+    
+    $('#conGathering').append($('<option>', {value: -1,text: 'Rien'}));
+    $('#conCompetition').append($('<option>', {value: -1,text: 'Rien'}));
+    $('#conGroup').append($('<option>', {value: -1,text: 'Rien'}));
+    $('#conAssault').append($('<option>', {value: -1,text: 'Rien'}));
+    $('#conGathering').val(-1);
+    $('#conCompetition').val(-1);
+    $('#conGroup').val(-1);
+    $('#conAssault').val(-1);
+
+    //alert(":" + selectedGather + ":" + selectedCompet + ":" + selectedGroup + ":" + selectedAssault);
+    //@Todo: server connection
+    var gatheringStructure = fakeGatheringStructure;
+
+    for (var g = 0; g < gatheringStructure.gathers.length; g++)
+    {
+        var currentgather = gatheringStructure.gathers[g];
+        $('#conGathering').append($('<option>', {
+            value: currentgather.id,
+            text: currentgather.name
+        }));
+        if ( 1*currentgather.id !== 1*selectedGather )
+            continue;
+        $('#conGathering').val(1*selectedGather);
+        for (var c = 0; c < currentgather.competitions.length; c++)
+        {
+            var currentcompet = currentgather.competitions[c];
+            $('#conCompetition').append($('<option>', {
+                value: currentcompet.id,
+                text: currentcompet.name
+            }));
+            if (1*currentcompet.id !== 1*selectedCompet)
+                continue;
+            $('#conCompetition').val(1*selectedCompet);
+            for (var gr = 0; gr < currentcompet.groups.length; gr++)
+            {
+                var currentgroup = currentcompet.groups[gr];
+                $('#conGroup').append($('<option>', {
+                    value: currentgroup.id,
+                    text: currentgroup.name
+                }));
+                if (1*currentgroup.id !== 1*selectedGroup)
+                    continue;
+                $('#conGroup').val(1*selectedGroup);
+                for (var a = 0; a < currentgroup.assaults.length; a++)
+                {
+                    var currentassault = currentgroup.assaults[a];
+                    $('#conAssault').append($('<option>', {
+                        value: currentassault.id,
+                        text: currentassault.name
+                    }));
+                    if (1*currentassault.id !== 1*selectedAssault)
+                        continue;
+                    $('#conAssault').val(1*selectedAssault);
+                    $('#assaultYellowName').val(currentassault.fighters[0].name);
+                    $('#assaultBlueName').val(currentassault.fighters[1].name);
+                }
+            }
+        }
+    }
+
+
+}// END displayGatheringInfo
+
 function addLog(text)
 {
     $('#logs ul').append('<li>' + globalChronometer.gettime() + ' -- ' + text + "</li>");
@@ -599,7 +686,7 @@ function networkSendUnsentScoreEvents()
         var full_call = api_url + "?" + $.param(tosendEvent);
 
         $.post(full_call, function(data) {
-            addLog('Server called for scoreevent '+i+' : ok'+full_call);
+            addLog('Server called for scoreevent ' + i + ' : ok' + full_call);
             totest[i].sent = true;
         });
         //@todo remove
@@ -610,7 +697,6 @@ function networkGetVoteResult()
 {
     //@todo warning synchonization management
 }
-
 
 /***
  * INITIALISATION
@@ -629,17 +715,22 @@ $(document).ready(function() {
         globalConfiguration.setValue($(this).data('cparameter'), $(this).val());
         //addLog(print_r(globalConfiguration));
         //addLog((localStorage.getItem('mainConfiguration')));
-        return false;
     });
     $('#settingsview select').change(function() {
-        globalConfiguration.setValue($(this).data('cparameter'), $(this).val());
-        //addLog(print_r(globalConfiguration));
-        //addLog((localStorage.getItem('mainConfiguration')));
-        return false;
+        var cpar = $(this).data('cparameter');
+        globalConfiguration.setValue(cpar, $(this).val());
+
+        if (cpar === 'conServer' ||
+                cpar === 'conGathering' ||
+                cpar === 'conCompetition' ||
+                cpar === 'conGroup' ||
+                cpar === 'conAssault')
+        {
+            displayGatheringInfo();
+        }
     });
     $('button.evtri').click(function() {
         globalScoreAccumulator.addEvent($(this).data('fcolor'), $(this).data('etype'), $(this).data('details'));
-        return false;
     });
     $('button.chtri').click(function() {
         if ($(this).data('etype') === 'start')
@@ -693,7 +784,6 @@ $(document).ready(function() {
                     $('#tabJudLnk').tab('show');
             }
         }
-        return false;
     });
 
 
@@ -702,7 +792,9 @@ $(document).ready(function() {
     displayTime();
     displayTouches();
     displayRefnote();
+    displayGatheringInfo();
     displayConfig();
+    displayGatheringInfo();
 
 
     var interv = setInterval(function() {
@@ -715,7 +807,7 @@ $(document).ready(function() {
 
 /****
  * TOREMOVE
- ***
+ ***/
  function print_r(theObj) {
  var win_print_r = "";
  for (var p in theObj) {
