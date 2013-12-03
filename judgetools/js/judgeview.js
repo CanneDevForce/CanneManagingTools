@@ -85,7 +85,7 @@ function Configuration()
             }
             else if ('judge2' === value || 'judge3' === value)
             {
-                if (globalConfiguration.autoSwitchtab==='1')
+                if (globalConfiguration.autoSwitchtab === '1')
                     $('#tabJudLnk').tab('show');
                 $('#tabJudLnk').show();
                 $('#tabVotLnk').show();
@@ -101,30 +101,9 @@ function Configuration()
             {
                 alert('Unknown role');
             }
-
-        }
-        else if ('' === key)
-        {
-
-        }
-        else if ('' === key)
-        {
-
-        }
-        else if ('' === key)
-        {
-
-        }
-        else if ('' === key)
-        {
-
-        }
-        else
-        {
         }
 
     };
-    this.is
     this.localLoad();
 }
 
@@ -197,7 +176,7 @@ function Chronometer()
     };
     this.stop = function()
     {
-        var endStage=false;
+        var endStage = false;
         if (this.lastStart !== false)
         {
             this.stoplist.push(new Date());
@@ -729,22 +708,22 @@ $(document).ready(function() {
     });
     $('button.evtri').click(function() {
         //@todo: ask for details part   
-        var added=globalScoreAccumulator.addEvent($(this).data('fcolor'), $(this).data('etype'), $(this).data('details'));
-        if(added && globalConfiguration.autoSwitchtab==='1')
-            $('#tabJudLnk').tab('show');            
+        var added = globalScoreAccumulator.addEvent($(this).data('fcolor'), $(this).data('etype'), $(this).data('details'));
+        if (added && globalConfiguration.autoSwitchtab === '1')
+            $('#tabJudLnk').tab('show');
     });
     $('button.chtri').click(function() {
         if ($(this).data('etype') === 'start')
         {
             globalChronometer.start();
-            if (globalConfiguration.autoSwitchtab==='1')
+            if (globalConfiguration.autoSwitchtab === '1')
                 $('#tabJudLnk').tab('show');
 
         }
         else if ($(this).data('etype') === 'stop')
         {
             var endStage = globalChronometer.stop();
-            if (!endStage && !globalChronometer.isInRecovery() && globalConfiguration.autoSwitchtab==='1')
+            if (!endStage && !globalChronometer.isInRecovery() && globalConfiguration.autoSwitchtab === '1')
             {
                 $('#tabMarLnk').tab('show');
             }
@@ -753,7 +732,7 @@ $(document).ready(function() {
         {
             globalChronometer.reset();
             globalScoreAccumulator.reset();
-            if (globalConfiguration.autoSwitchtab==='1')
+            if (globalConfiguration.autoSwitchtab === '1')
                 $('#tabJudLnk').tab('show');
         }
         else if ($(this).data('etype') === 'vote')
@@ -777,10 +756,10 @@ $(document).ready(function() {
             {
                 globalScoreAccumulator.addEvent(color, vote, false);
                 $('#voteview button').removeClass('active');
-                if (vote==='voteYes' &&globalConfiguration.userRole === 'judge1')
+                if (vote === 'voteYes' && globalConfiguration.userRole === 'judge1')
                 {
                     $('#tabMarLnk').tab('show');
-                    var target='#markview [data-fcolor='+color+'][data-etype=warning]';
+                    var target = '#markview [data-fcolor=' + color + '][data-etype=warning]';
                     $(target).click();
                 }
                 else
@@ -810,21 +789,21 @@ $(document).ready(function() {
 
 /****
  * TOREMOVE
- ***/
-function print_r(theObj) {
-    var win_print_r = "";
-    for (var p in theObj) {
-        var _type = typeof(theObj[p]);
-        if ((_type.indexOf("array") >= 0) || (_type.indexOf("object") >= 0)) {
-            win_print_r += "<li>";
-            win_print_r += "[" + _type + "] =>" + p;
-            win_print_r += "<ul>";
-            win_print_r += print_r(theObj[p]);
-            win_print_r += "</ul></li>";
-        } else {
-            win_print_r += "<li>[" + p + "] =>" + theObj[p] + "</li>";
-        }
-    }
-    return win_print_r;
-}
-/**/
+ ***
+ function print_r(theObj) {
+ var win_print_r = "";
+ for (var p in theObj) {
+ var _type = typeof(theObj[p]);
+ if ((_type.indexOf("array") >= 0) || (_type.indexOf("object") >= 0)) {
+ win_print_r += "<li>";
+ win_print_r += "[" + _type + "] =>" + p;
+ win_print_r += "<ul>";
+ win_print_r += print_r(theObj[p]);
+ win_print_r += "</ul></li>";
+ } else {
+ win_print_r += "<li>[" + p + "] =>" + theObj[p] + "</li>";
+ }
+ }
+ return win_print_r;
+ }
+ /**/
