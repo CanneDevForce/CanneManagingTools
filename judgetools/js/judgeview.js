@@ -394,6 +394,11 @@ function ScoreAccumulator()
         this.localStore();
 
     };
+    this.addDetail = function(detail)
+    {
+        this.eventList[globalScoreAccumulator.eventList.length - 1].details = detail;
+        this.localStore();
+    }
     this.localLoad();
 }
 
@@ -622,10 +627,6 @@ function displayGatheringInfo()
 
 }// END displayGatheringInfo
 
-function displayModalQuestion(options,callback)
-{
-    
-}
 
 function addLog(text)
 {
@@ -772,6 +773,11 @@ $(document).ready(function() {
             }
         }
     });
+    $('#detailsview button').click(function() {
+        //a bit easy but.
+        globalScoreAccumulator.addDetail($(this).data('fault'));
+    });
+
 
 
     // VIEW SETUP
@@ -787,6 +793,7 @@ $(document).ready(function() {
     var interv = setInterval(function() {
         networkSendUnsentScoreEvents();
     }, 1000);
+    addLog( print_r(globalScoreAccumulator) );
 
 });
 
@@ -794,7 +801,7 @@ $(document).ready(function() {
 
 /****
  * TOREMOVE
- ***
+ ***/
  function print_r(theObj) {
  var win_print_r = "";
  for (var p in theObj) {
