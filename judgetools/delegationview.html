@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Outils de gestion d'assauts de canne de combat">
+        <meta name="author" content="Julien Falconnet">
+        <link rel="shortcut icon" href="ico/favicon.png">
+
+        <title>Interface pour le délégué officiel</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="css/canne_common.css" rel="stylesheet">
+        <link href="css/delegateview.css" rel="stylesheet">
+
+        <!-- Just for debugging purposes. Don't actually copy this line! -->
+        <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id='navbarid'>
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Canne Managing Tool</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#boardview" data-toggle="tab" id='tabBoaLnk'>Synthèse</a></li>
+                        <li><a href="#competitionview_1" data-toggle="tab" id='tabC1Lnk'>Competition 1</a></li>
+                        <li><a href="#competitionview_2" data-toggle="tab" id='tabC2Lnk'>Competition 2</a></li>
+                        <li><a href="#fightview" data-toggle="tab" id='tabMarLnk'>Configuration</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <div class="container tab-pane active" id='boardview'>
+                <div class='row'>
+                    <div class='col-xs-7'>
+                        <h1>En cours</h1>
+                        <div class='row'>
+                            <div class='col-md-4'>
+                                <table class='table table-striped table-condensed'>
+                                    <caption>Aire 1</caption>
+                                    <thead>
+                                        <tr>
+                                            <th>Jaune</th>
+                                            <th>Juge</th>
+                                            <th>Bleu</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <td>B. Latt</td>
+                                            <th></th>
+                                            <td>F. VDG</td>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>05</td>
+                                            <th>#1</th>
+                                            <td>11</td>
+                                        </tr>
+                                        <tr>
+                                            <td>04</td>
+                                            <th>#2</th>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>15</td>
+                                            <th>#3</th>
+                                            <td>10</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div><!-- Aire1 -->
+                            <div class='col-md-4'>
+                                <table class='table table-striped table-condensed'>
+                                    <caption>Aire 2</caption>
+                                    <thead>
+                                        <tr>
+                                            <th>Jaune</th>
+                                            <th>Juge</th>
+                                            <th>Bleu</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <td>B. Latt</td>
+                                            <th></th>
+                                            <td>F. VDG</td>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>05</td>
+                                            <th>#1</th>
+                                            <td>11</td>
+                                        </tr>
+                                        <tr>
+                                            <td>04</td>
+                                            <th>#2</th>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>15</td>
+                                            <th>#3</th>
+                                            <td>10</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div><!-- Aire2 -->
+                            <div class='col-md-4'>
+                                <table class='table table-striped table-condensed'>
+                                    <caption>Aire 3</caption>
+                                    <thead>
+                                        <tr>
+                                            <th>Jaune</th>
+                                            <th>Juge</th>
+                                            <th>Bleu</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <td>B. Latt</td>
+                                            <th></th>
+                                            <td>F. VDG</td>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>05</td>
+                                            <th>#1</th>
+                                            <td>11</td>
+                                        </tr>
+                                        <tr>
+                                            <td>04</td>
+                                            <th>#2</th>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td>15</td>
+                                            <th>#3</th>
+                                            <td>10</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div><!-- Aire3 -->
+                        </div><!-- innerrow -->
+                        <table class='table table-striped'>
+                            <caption>Derniers résultats</caption>
+                            <thead>
+                                <tr>
+                                    <th>Vainqueur</th>
+                                    <th>Perdant</th>
+                                    <th>Aire</th>
+                                    <th>Heure</th>
+                                    <th>#Série</th>
+                                    <th>#Groupe</th>
+                                    <th>#Match</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Toto(11)</td>
+                                    <td>Tata(5)</td>
+                                    <td>Aire 1</td>
+                                    <td>11h22</td>
+                                    <td>Senior Masc</td>
+                                    <td>Poule 1</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>Titi(72)</td>
+                                    <td>Tutu(3)</td>
+                                    <td>Aire 2</td>
+                                    <td>11h20</td>
+                                    <td>Senior Masc</td>
+                                    <td>Poule 1</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>Lolo(11)</td>
+                                    <td>Lala(5)</td>
+                                    <td>Aire 3</td>
+                                    <td>11h03</td>
+                                    <td>Senior Fem</td>
+                                    <td>Poule 4</td>
+                                    <td>2</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div><!-- col -->
+
+
+                    <div class='col-xs-5'>
+                        <h1>Classements</h1>
+                        <table class='table table-striped'>
+                            <caption>Sen Masc Poule 1</caption>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nom</th>
+                                    <th>Pts</th>
+                                    <th>Avert.</th>
+                                    <th>P. Marqués</th>
+                                    <th>P. Subis</th>
+                                    <th>Nb.</th>
+                                    <th>Rq.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>B. Latt</td>
+                                    <td>8</td>
+                                    <td>2</td>
+                                    <td>132</td>
+                                    <td>13</td>
+                                    <td>3/5</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>P. Breucker</td>
+                                    <td>5</td>
+                                    <td>4</td>
+                                    <td>43</td>
+                                    <td>32</td>
+                                    <td>2/5</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>J. Falconnet</td>
+                                    <td>2</td>
+                                    <td>0</td>
+                                    <td>23</td>
+                                    <td>45</td>
+                                    <td>1/5</td>
+                                    <td>C. Jaune</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <table class='table table-striped'>
+                            <caption>Sen Masc Poule 2</caption>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nom</th>
+                                    <th>Pts</th>
+                                    <th>Avert.</th>
+                                    <th>P. Marqués</th>
+                                    <th>P. Subis</th>
+                                    <th>Nb.</th>
+                                    <th>Rq.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>B. Latt</td>
+                                    <td>8</td>
+                                    <td>2</td>
+                                    <td>132</td>
+                                    <td>13</td>
+                                    <td>3/5</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>P. Breucker</td>
+                                    <td>5</td>
+                                    <td>4</td>
+                                    <td>43</td>
+                                    <td>32</td>
+                                    <td>2/5</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>J. Falconnet</td>
+                                    <td>2</td>
+                                    <td>0</td>
+                                    <td>23</td>
+                                    <td>45</td>
+                                    <td>1/5</td>
+                                    <td>C. Jaune</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        
+                    </div><!-- col -->
+
+
+                </div><!-- row -->
+            </div><!-- /.container #bordview -->
+
+            <div class="container tab-pane" id='competitionview_1'>
+                <div class='row'>
+                    <div class='col-xs-6'>
+                        competition1
+                    </div>
+
+                    <div class='col-xs-6'>
+                    </div>
+
+                </div>
+            </div><!-- /.container #competitionview_1 -->
+
+            <div class="container tab-pane" id='competitionview_2'>
+                <div class='row'>
+                    <div class='col-xs-6'>
+                        competition2
+                    </div>
+
+                    <div class='col-xs-6'>
+                    </div>
+
+                </div>
+            </div><!-- /.container #competitionview_2 -->
+
+            <div class="container tab-pane" id='fightview'>
+                <div class='row'>
+                    <div class='col-xs-6'>
+                        fight
+                    </div>
+
+                    <div class='col-xs-6'>
+                    </div>
+
+                </div>
+            </div><!-- /.container #fightview -->
+
+
+        </div><!-- class="tab-content" -->
+
+        <footer id="pagefooter">
+            <div class="hidden-xs">
+                <audio preload='auto' id='endSound'>
+                    <source src="snd/boing.wav" type="audio/wav">
+                </audio>                
+                <audio preload='auto' id='problemSound'>
+                    <source src="snd/bing.wav" type="audio/wav">
+                </audio>                
+                <audio preload='auto' id='completeSound'>
+                    <source src="snd/ting.wav" type="audio/wav">
+                </audio>                
+            </div>
+        </footer>
+        <!-- Bootstrap core JavaScript 
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/delegationview.js"></script>
+    </body>
+</html>
+
