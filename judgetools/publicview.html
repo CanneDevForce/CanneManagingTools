@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Outils de gestion d'assauts de canne de combat">
+        <meta name="author" content="Julien Falconnet">
+        <link rel="shortcut icon" href="ico/favicon.png">
+
+        <title>Interface pour le public</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="css/canne_common.css" rel="stylesheet">
+        <link href="css/publicview.css" rel="stylesheet">
+
+        <!-- Just for debugging purposes. Don't actually copy this line! -->
+        <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id='navbarid'>
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Canne Managing Tool</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#generalview" data-toggle="tab" id='tabGenLnk'>Synthèse</a></li>
+                        <li><a href="#aire1view" data-toggle="tab" id='tabA1Lnk'>Aire1</a></li>
+                        <li><a href="#aire2view" data-toggle="tab" id='tab12Lnk'>Aire2</a></li>
+                        <li><a href="#aire3view" data-toggle="tab" id='tabA3Lnk'>Aire3</a></li>
+                        <li><a href="#configurationview" data-toggle="tab" id='tabConLnk'>Configuration</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <div class="container tab-pane active" id='generalview'>
+                <div class='row'>
+                    <div class='col-xs-4'>
+
+
+
+
+                        <table class='table table-bordered'>
+                            <caption>Aire 1</caption>
+                            <colgroup>
+                                <col class='yellow' />
+                                <col class='blue' />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>B. Latt</th>
+                                    <th>F. VDG</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <td>Jaune</td>
+                                    <td>Bleu</td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>05</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>-7</td>
+                                    <td>-1</td>
+                                </tr>
+                                <tr>
+                                    <td>***</td>
+                                    <td>* CR</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                        <table class='table table-striped'>
+                            <caption>Classement Sen Masc 1</caption>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nom</th>
+                                    <th>Pts</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>B. Latt</td>
+                                    <td>8</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>P. Breucker</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>J. Falconnet</td>
+                                    <td>2</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                    <div class='col-xs-4'>
+                        aire2
+                    </div>
+                    <div class='col-xs-4'>
+                        aire3
+                    </div>                        
+                </div><!-- row -->
+            </div><!-- /.container #bordview -->
+
+            <div class="container tab-pane" id='aire1view'>
+                <div class='row'>
+                    <div class='col-xs-6'>
+                        aire1
+                    </div>
+
+                    <div class='col-xs-6'>
+                    </div>
+
+                </div>
+            </div><!-- /.container #aire1view -->
+
+            <div class="container tab-pane" id='aire2view'>
+                <div class='row'>
+                    <div class='col-xs-6'>
+                        aire2
+                    </div>
+
+                    <div class='col-xs-6'>
+                    </div>
+
+                </div>
+            </div><!-- /.container #aire2view -->
+
+            <div class="container tab-pane" id='aire3view'>
+                <div class='row'>
+                    <div class='col-xs-6'>
+                        aire3
+                    </div>
+
+                    <div class='col-xs-6'>
+                    </div>
+
+                </div>
+            </div><!-- /.container #aire3view -->
+
+            <div class="container tab-pane" id='configurationview'>
+                <div class='row'>
+                    <div class='col-xs-6'>
+                        configuration
+                    </div>
+
+                    <div class='col-xs-6'>
+                        configuration
+                    </div>
+
+                </div>
+            </div><!-- /.container #configurationview -->
+
+
+        </div><!-- class="tab-content" -->
+
+        <footer id="pagefooter">
+            <div class="hidden-xs">
+                <audio preload='auto' id='endSound'>
+                    <source src="snd/boing.wav" type="audio/wav">
+                </audio>                
+                <audio preload='auto' id='problemSound'>
+                    <source src="snd/bing.wav" type="audio/wav">
+                </audio>                
+                <audio preload='auto' id='completeSound'>
+                    <source src="snd/ting.wav" type="audio/wav">
+                </audio>                
+            </div>
+        </footer>
+        <!-- Bootstrap core JavaScript 
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/delegationview.js"></script> 
+    </body>
+</html>
+
