@@ -1,2 +1,4 @@
 .yellow{background:#ff0;}
-.blue{background:#88f;}
+.blue{background:#88f}
+.tournament {width:100%;}
+.tournament td{border:1px solid black;text-align:center;}

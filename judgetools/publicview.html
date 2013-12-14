@@ -46,6 +46,7 @@
                         <li><a href="#aire1view" data-toggle="tab" id='tabA1Lnk'>Aire1</a></li>
                         <li><a href="#aire2view" data-toggle="tab" id='tab12Lnk'>Aire2</a></li>
                         <li><a href="#aire3view" data-toggle="tab" id='tabA3Lnk'>Aire3</a></li>
+                        <li><a href="#poolsview" data-toggle="tab" id='tabPoLnk'>Classements</a></li>
                         <li><a href="#configurationview" data-toggle="tab" id='tabConLnk'>Configuration</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -55,7 +56,7 @@
         <div class="tab-content">
             <div class="container tab-pane active" id='generalview'>
                 <div class='row'>
-                    <div class='col-xs-4'>
+                    <div class='col-xs-12 col-md-4'>
                         <h1>Aire 1</h1>
                         <h2>3e série (masc)</h2>
                         <table class='table table-bordered'>
@@ -151,7 +152,7 @@
 
 
                     </div>
-                    <div class='col-xs-4'>
+                    <div class='col-xs-12 col-md-4'>
 
                         <h1>Aire 2</h1>
                         <h2>1ere série (masc)</h2>
@@ -164,7 +165,7 @@
                             </colgroup>
                             <thead>
                                 <tr>
-                                    <td>1'22"</td>
+                                    <td>0'17"</td>
                                     <th>B. Latt</th>
                                     <th>F. VDG</th>
                                 </tr>
@@ -234,9 +235,7 @@
 
 
                     </div>
-                    <div class='col-xs-4'>
-
-
+                    <div class='col-xs-12 col-md-4'>
                         <h1>Aire 3</h1>
                         <h2>1ere série (fém)</h2>
                         <table class='table table-bordered'>
@@ -339,11 +338,43 @@
 
             <div class="container tab-pane" id='aire1view'>
                 <div class='row'>
-                    <div class='col-xs-6'>
-                        aire1
-                    </div>
-
-                    <div class='col-xs-6'>
+                    <div class='col-xs-12'>
+                        <h1>Aire 3</h1>
+                        <h2>1ere série (fém)</h2>
+                        <table class='table table-bordered'>
+                            <caption>Finale</caption>
+                            <colgroup>
+                                <col class='indication'/>
+                                <col class='yellow' />
+                                <col class='blue' />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <td>0'45"</td>
+                                    <th>S. Claudin</th>
+                                    <th>L. Mallard</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <td>Couleur</td>
+                                    <td>Jaune</td>
+                                    <td>Bleu</td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>Score</td>
+                                    <td>05</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>Sanctions</td>
+                                    <td>J*</td>
+                                    <td>***</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
                 </div>
@@ -373,6 +404,76 @@
                 </div>
             </div><!-- /.container #aire3view -->
 
+            <div class="container tab-pane" id='poolsview'>
+                <div class='row'>
+                    <div class='col-xs-6'>
+                                                
+
+                        <table class='table table-striped'>
+                            <caption>Poule 1  - 1ere série - masc</caption>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nom</th>
+                                    <th>Pts(/max)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>B. Latt</td>
+                                    <td>8 (/9)</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>F. VDG</td>
+                                    <td>5 (/6)</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>J. Doe</td>
+                                    <td>2 (/3)</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>J. Doe</td>
+                                    <td>0 (/0)</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>J. Doe</td>
+                                    <td>0 (/0)</td>
+                                </tr>
+
+                            </tbody>
+                        </table>                        
+
+                    </div>
+
+                    <div class='col-xs-6'>
+                        <table class='tournament'>
+                            <caption>Eliminatoires 3e série</caption>
+                            <tr>
+                                <td>A. Aaaa</td>
+                                <td rowspan='2'>A. Aaaa</td>
+                                <td rowspan='4'>C. Cccc</td>                                
+                            </tr>
+                            <tr>
+                                <td>B. Bbbb</td>
+                            </tr>
+                            <tr>
+                                <td>C. Cccc</td>
+                                <td rowspan='2'>C. Cccc</td>
+                            </tr>
+                            <tr>
+                                <td>D. Dddd</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div><!-- /.container #configurationview -->            
+            
             <div class="container tab-pane" id='configurationview'>
                 <div class='row'>
                     <div class='col-xs-6'>
