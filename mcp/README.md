@@ -38,3 +38,10 @@ Then you should copy the default parameters file and create one with your own (l
 $ cp env/env.js.default  env/env.js
 ```
 
+#Start
+```
+$ node index.js
+```
+
+
+
