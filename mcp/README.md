@@ -40,6 +40,7 @@ $ cp env/env.js.default  env/env.js
 
 #Start
 ```
+$ cd server/api
 $ node index.js
 ```
 
