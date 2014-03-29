@@ -9,20 +9,39 @@
 
 
 /******** initialization *********/
-//express initialization - handle request/response
-var express = require('express');
-var app = express();
 
-//mcp api methods
-var api = require('./lib/api.js');
+//environement
+var env = require('./env/env.js');
+
+//express initialization - handle http request/response
+var express = require('express');
+
+//mongoose for the schema & models
+var mongoose = require('mongoose');
+
+//restful for api/routes
+var restful = require('node-restful');
+
+//create node app
+var app = module.exports = express(); //not sure exactly why module.exports... (see https://github.com/baugarten/node-restful/blob/master/examples/notes/index.js)
+
+//connect mongoose to mongoDB
+mongoose.connect(env.mongodb.url);
+
+
 
 /****** app config ***********/
 app.use(express.bodyParser());
+app.use(express.methodOverride());
 
 /********Routes**************/
+//expose a list of models to register
+var models = require('./models/index');
+models.forEach(function(model) {
+   console.log("Register " , model.modelName);
+   model.register(app, '/' + model.modelName);
+});
+/******** app start ***********/
 
-//root endpoint
-app.get('/', api.welcome);
-
-
-module.exports = app;
+app.listen(env.api.port);
+console.log('mcp api server - listening on port '+env.api.port);
