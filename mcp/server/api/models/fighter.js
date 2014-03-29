@@ -23,6 +23,21 @@
   description: String
  });
 
+fighter.statics.findByName = function (name, cb){
+    this.find({ name: new RegExp(name, 'i') }, cb);
+  };
+
 var Fighter = restful.model("fighters",fighter).methods(['get', 'delete', 'put', 'post']);
+
+//routes
+Fighter.route('find',function(req, res, next) {
+   console.log('try to find ', req.body.name);
+   this.findByName(req.body.name, function(err,result){
+     res.send(result);
+   });
+  
+});
+
+
 console.log("model fighter defined ");
 exports = module.exports = Fighter;

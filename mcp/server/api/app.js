@@ -41,6 +41,7 @@ models.forEach(function(model) {
    console.log("Register " , model.modelName);
    model.register(app, '/' + model.modelName);
 });
+
 /******** app start ***********/
 
 app.listen(env.api.port);
