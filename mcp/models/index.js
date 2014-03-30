@@ -1,11 +1,11 @@
 var Fighter = require('./fighter');
 var ScoreEvent = require('./scoreEvent');
-// var Assault = require('./assault');
-// var Group = require('./group');
-// var Competition = require('./competition');
-// var Gathering = require('./gathering');
+var Assault = require('./assault');
+var Group = require('./group');
+var Competition = require('./competition');
+var Gathering = require('./gathering');
 
-exports = module.exports = [Fighter, ScoreEvent/*, Assault, Group, Competition, Gathering*/];
+exports = module.exports = [Fighter, ScoreEvent, Assault, Group, Competition, Gathering];
 
 //exports = module.exports = Fighter;
 ///////// @todo /////////////////
