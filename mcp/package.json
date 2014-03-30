@@ -1,9 +1,9 @@
 {
     "name": "master-canne-program",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "private": true,
     "scripts": {
-        "start": "node index.js"
+        "start": "node app"
     },
     "dependencies": {
        "express": "3.*",

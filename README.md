@@ -5,7 +5,7 @@ Tools for managing competitions of canne de combat.
 #Project Overview
 Developping an all-in-one, feature-full competition management tool. It is developped by enthousisats canne fighters and other all around the world.
 
-
+Please goto sub-directories projects README files to see specific documentation. You can also check out our [wiki](https://github.com/CanneDevForce/CanneManagingTools/wiki) for some more general infos and API reference (work in progress).
 
 #Todo
 - ability to register competitors (into a centralized persistent storage)
