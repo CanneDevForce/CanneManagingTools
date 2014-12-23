@@ -69,7 +69,7 @@ $ node app
 ```
 
 #Use
-The app listen by default at localhost:8080. The models directory holds all the database objects. For each object the API is providing standard HTTP methods : POST, GET, PUT, DELETE (create, retrieve, update, delete or CRUD). The API forms are RESTful-ish standard, so you can do the following standard requests an all objects: 
+The app listens by default at localhost:8080. The models directory holds all the database objects. For each object the API is providing standard HTTP methods : POST, GET, PUT, DELETE (create, retrieve, update, delete or CRUD). The API forms are RESTful-ish standard, so you can do the following standard requests an all objects: 
 
 ```
 GET /objects[?<queryString>]

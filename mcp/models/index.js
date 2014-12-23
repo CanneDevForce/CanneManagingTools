@@ -1,3 +1,10 @@
+/**
+* mcp - models/index.js
+* Philippe Breucker - 2014
+* This file gathers all objects definition and API endpoint declaration
+*/
+
+//Object definition (1 object = 1 class in 1 file)
 var Fighter = require('./fighter');
 var ScoreEvent = require('./scoreEvent');
 var Assault = require('./assault');
@@ -5,12 +12,20 @@ var Group = require('./group');
 var Competition = require('./competition');
 var Gathering = require('./gathering');
 
+//Exporting object to make them available to the app
 exports = module.exports = [Fighter, ScoreEvent, Assault, Group, Competition, Gathering];
 
 //exports = module.exports = Fighter;
 ///////// @todo /////////////////
 /***
 module.exports = {
+    //******* Objects **************
+    Fighter,
+    ScoreEvent,
+    Assault,
+    Group,
+    Competition,
+    Gathering,
 
     //****** API specific **********
     
