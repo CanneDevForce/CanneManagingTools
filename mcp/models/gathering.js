@@ -6,8 +6,6 @@
  * @author     Philippe Breucker
  * @version    0.1 - 2014
  */
- var restful = require('node-restful');
- var mongoose = require('mongoose');
 
  var gathering = mongoose.Schema({
   name: String

@@ -4,6 +4,11 @@
 * This file gathers all objects definition and API endpoint declaration
 */
 
+//common objects definition
+ restful = require('node-restful');
+ mongoose = require('mongoose');
+ ObjectId = mongoose.Schema.Types.ObjectId;
+
 //Object definition (1 object = 1 class in 1 file)
 var Fighter = require('./fighter');
 var ScoreEvent = require('./scoreEvent');

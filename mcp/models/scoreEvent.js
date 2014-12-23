@@ -38,16 +38,13 @@ Default : 265 points
 
 **/
 
-var restful = require('node-restful');
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 var scoreEvent = mongoose.Schema({
 assault_judge_order: Number,
 type: String,
 created_at: { type: Date, default: Date.now },
 details : String,
-fighter : { type: Schema.Types.ObjectId, ref: 'Fighter' },
-assault : { type: Schema.Types.ObjectId, ref: 'Assault' }
+fighter : { type: ObjectId, ref: 'Fighter' },
+assault : { type: ObjectId, ref: 'Assault' }
 //@todo
 });
 
