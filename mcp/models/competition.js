@@ -10,9 +10,8 @@
  var mongoose = require('mongoose');
 
  var competition = mongoose.Schema({
-  name: String
-  //@todo
- });
+  
+  });
 
 var Competition = restful.model("competitions",competition).methods(['get', 'delete', 'put', 'post']);
 console.log("model competition defined");
