@@ -17,13 +17,19 @@ var env = require('./env/env.js');
 var express = require('express');
 
 //mongoose for the schema & models
-var mongoose = require('mongoose');
+mongoose = require('mongoose');
+
+//common objects definition (shortcut used in models)
+ObjectId = mongoose.Schema.Types.ObjectId;
 
 //restful for api/routes
-var restful = require('node-restful');
+restful = require('node-restful');
+
+//formage for admin gui panel
+formage = require('formage');
 
 //create node app
-var app = module.exports = express(); //not sure exactly why module.exports... (see https://github.com/baugarten/node-restful/blob/master/examples/notes/index.js)
+app = module.exports = express(); //not sure exactly why module.exports... (see https://github.com/baugarten/node-restful/blob/master/examples/notes/index.js)
 
 //connect mongoose to mongoDB
 mongoose.connect(env.mongodb.url);
@@ -33,14 +39,31 @@ mongoose.connect(env.mongodb.url);
 /****** app config ***********/
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+// creation of a false admin user cookie for formage to work...
+app.use(express.cookieParser('magical secret admin'));
+app.use(express.cookieSession({cookie: { maxAge: 1000 * 60 * 60 *  24 }}));
 
 /********Routes**************/
 //expose a list of models to register
-var models = require('./models/index');
+models = require('./models/index');
 models.forEach(function(model) {
    console.log("Register " , model.modelName);
    model.register(app, '/' + model.modelName);
 });
+
+/*** formage configuration : used for admin panel ***/
+// Site-wide options, and their default values
+
+formage.init(app, express, mongoose.models, {
+    title: 'Admin',
+    root: '/admin',
+    username: 'admin',
+    password: 'admin',
+    admin_users_gui: true
+});
+console.log("formage :", formage);
+
+
 
 /******** app start ***********/
 

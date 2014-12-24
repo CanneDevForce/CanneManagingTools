@@ -1,6 +1,6 @@
 {
     "name": "master-canne-program",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "private": true,
     "scripts": {
         "start": "node app"
@@ -11,6 +11,7 @@
        "mongodb":"1.*",
        "mongoose":"*",
        "node-restful":"*",
-       "coffee-script":"*"
+       "coffee-script":"*",
+       "formage":"*"
     }
 }

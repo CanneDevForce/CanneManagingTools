@@ -24,7 +24,7 @@ var score = mongoose.Schema({
           cartonjaune: String,
           cartonrouge: String
     },
-    fighters: [{ type: ObjectId, ref: 'Fighter' }]
+    fighters: [{ type: ObjectId, ref: 'fighters' }]
 });
 
 
@@ -35,7 +35,7 @@ var assault = mongoose.Schema({
     type: String, //"single"
     regulations: String, // "France2015"
     scores: [score], //the scores is an array of 2 scores : one for each side 
-    judges: [{ type: ObjectId, ref: 'Fighter' }], //judges are just another fighters :)
+    judges: [{ type: ObjectId, ref: 'fighters' }], //judges are just another fighters :)
     created_at: { type: Date, default: Date.now },
     started_at: { type: Date, default: null },
     updated_at: { type: Date, default: null },

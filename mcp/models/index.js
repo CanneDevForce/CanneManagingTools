@@ -4,10 +4,6 @@
 * This file gathers all objects definition and API endpoint declaration
 */
 
-//common objects definition
- restful = require('node-restful');
- mongoose = require('mongoose');
- ObjectId = mongoose.Schema.Types.ObjectId;
 
 //Object definition (1 object = 1 class in 1 file)
 var Fighter = require('./fighter');
@@ -18,7 +14,7 @@ var Competition = require('./competition');
 var Gathering = require('./gathering');
 
 //Exporting object to make them available to the app
-exports = module.exports = [Fighter, ScoreEvent, Assault, Group, Competition, Gathering];
+exports = module.exports = [Fighter, Assault, ScoreEvent, Group, Competition, Gathering];
 
 //exports = module.exports = Fighter;
 ///////// @todo /////////////////

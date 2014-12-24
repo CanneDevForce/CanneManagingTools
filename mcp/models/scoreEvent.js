@@ -43,8 +43,8 @@ assault_judge_order: Number,
 type: String,
 created_at: { type: Date, default: Date.now },
 details : String,
-fighter : { type: ObjectId, ref: 'Fighter' },
-assault : { type: ObjectId, ref: 'Assault' }
+fighter : { type: ObjectId, ref: 'fighters' },
+assault : { type: ObjectId, ref: 'assaults' }
 //@todo
 });
 
