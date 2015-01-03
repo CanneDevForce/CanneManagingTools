@@ -8,6 +8,11 @@
  */
  
  //*** fighter schema ***
+
+//pommel definition
+ var pommels = "blue green red white yellow".split(' ');
+
+//model
  var fighter = mongoose.Schema({
   name: String,
   mailAddress: String,
@@ -16,7 +21,7 @@
   born: { type: Date, default: Date.now },
   gender: String,
   clubName: String,
-  pommelLevel: String,
+  pommelLevel: { type: String, enum: pommels },
   refereeLevel: String,
   role: String,
   description: String,
@@ -49,6 +54,25 @@ Fighter.route('find',function(req, res, next) {
   }
 });
 
+//formage definitions
+Fighter.formage = {
+    filters: ['pommelLevel', 'nationality'],
+
+    // // additional actions on this model
+    // actions: [
+    //    {
+    //       id: 'release',
+    //       label: 'Release',
+    //       func: function (user, ids, callback) {
+    //          console.log('You just released songs ' + ids);
+    //          callback();
+    //       }
+    //    }
+    // ],
+
+    // list of fields on which full-text search is available
+    search: ['name', 'clubName', 'nickName']
+};
 
 console.log("model fighter defined ");
 exports = module.exports = Fighter;
