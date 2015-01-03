@@ -12,7 +12,8 @@ It manages gatherings, competitions, groups, assaults, fighters and scores.
 
 #Requirements
 
-MCP is based on [nodejs server](http://nodejs.org) with [expressjs web framework](http://expressjs.com/) (see above for installation). It also uses [mongoDB](http://www.mongodb.org) for storage. The restful part is impletented using the [node-restful](https://github.com/baugarten/node-restful) module, and the data base object relations are using the [mongoose](http://mongoosejs.com/index.html) module.
+MCP is based on [nodejs server](http://nodejs.org) with [expressjs web framework](http://expressjs.com/) (see above for installation). It also uses [mongoDB](http://www.mongodb.org) for storage. The restful part is impletented using the [node-restful](https://github.com/baugarten/node-restful) module, and the data base object relations are using the [mongoose](http://mongoosejs.com/index.html) module. 
+On top of that, we use [formage](https://github.com/TheNodeILs/formage) to create an admin panel with a web frontend, allowing CRUD operations on the defined models.
 
 Please install the folowing if you don't already have it (instructions are for ubuntu based systems): 
 
