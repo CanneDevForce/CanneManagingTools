@@ -69,7 +69,13 @@ $ cd mcp
 $ node app
 ```
 
-#Use
+#Vagrant virtual machine
+If you want all in one installation via a virtual machine, we have made a Vagrant configuration file (see https://www.vagrantup.com for details about vagrant). To install it that way, you must first install [Virtual Box](https://www.virtualbox.org/wiki/Downloads). Then install the VM with the script ```vagrant-create-vm.sh```. This will install the mcp.box pre-installed VM in your system, and connect you to it. To finish the install you must then run ```vagrant-install.sh``` from inside the box. Once all is installed, just run the app by running ```. start.sh``` in the VM in the /vagrant directory (whitch is connected to your git cloned directory on the host machine). That's it ! The app should be running on http://localhost:8080/admin on your host machine.
+The database directory is set by default to write on /var/lib/mongodb, inside the VM. So if you wish to backup the datas, just backup the virutal hard drive and all will be saved, including the changes in your virtual machine !
+This even runs on Windows machines, because the Virtual Box and Vagrant packages come for windows, linux and OSX. Although of course the vagrant install script is for ubuntu only.
+
+#Usage
+## API
 The app listens by default at localhost:8080. The models directory holds all the database objects. For each object the API is providing standard HTTP methods : POST, GET, PUT, DELETE (create, retrieve, update, delete or CRUD). The API forms are RESTful-ish standard, so you can do the following standard requests an all objects: 
 
 ```
@@ -99,3 +105,7 @@ Delete object with id :id
 
 
 For now, existing objects are Fighters, ScoreEvent, Assaults, Group, Competition and Gathering
+
+## Admin interface
+Formage sets up a web-interface so you can easilly access the database and manage the different objects. Go to http://localhost:8080/admin and log in with the credentials user : admin, pass : admin to start using the interface.
+You can then create, update or delete any of the objects currently in database. You can view the objects with external references as dropdown lists, whitch is very helpful to maintain references troughout the database.

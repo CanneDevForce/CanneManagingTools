@@ -24,4 +24,4 @@ curl -sL https://deb.nodesource.com/setup | bash -
 apt-get install -y nodejs build-essential
 
 echo '---- updating app modules'
-npm install -g 
+npm install
