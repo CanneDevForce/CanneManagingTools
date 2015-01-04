@@ -109,3 +109,6 @@ For now, existing objects are Fighters, ScoreEvent, Assaults, Group, Competition
 ## Admin interface
 Formage sets up a web-interface so you can easilly access the database and manage the different objects. Go to http://localhost:8080/admin and log in with the credentials user : admin, pass : admin to start using the interface.
 You can then create, update or delete any of the objects currently in database. You can view the objects with external references as dropdown lists, whitch is very helpful to maintain references troughout the database.
+
+## Mongo interface
+If you want a direct admin of mongo server, I recommand [Genghis](https://github.com/bobthecow/genghis) whitch provides direct server management for all your mongo instances. It can run its own server in ruby or php and requires almost nothing to install.
